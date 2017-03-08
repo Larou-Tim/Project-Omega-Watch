@@ -1,0 +1,31 @@
+/*-------------------------------*/
+/*POKE PRESENTATION*/
+/*-------------------------------*/
+.pokeBanner{}
+.pokeHUD{
+	background-image:;
+}
+
+/*-------------------------------*/
+/*POKE PANELS*/
+/*-------------------------------*/
+.pokePanel{
+	box-shadow:2px 2px 2px #888888;
+}
+[class*='pokePanel-']{
+
+}
+.pokePanel-title{}
+.pokePanel-content{}
+
+/*-------------------------------*/
+/*POKE TEXTUAL THINGS*/
+/*-------------------------------*/
+.pokeText{}
+
+/*-------------------------------*/
+/*POKE ACTIONS*/
+/*-------------------------------*/
+.pokeButton{
+	box-shadow:2px 2px 2px #888888;
+}
