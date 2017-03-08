@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FireBase Example</title>
+	<!-- Jquery -->
+	<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  <!-- Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+</head>
+<body>
+<div class="userAuth">
+	<input id="email" type="text" placeholder="Email"/>
+	<input id="password" type="password" placeholder="Password"/>
+	<button id="register">Register</button>
+	<button id="login">Login</button>
+	<button id="logout">Sign Out</button>
+</div>
+<script>
+// --------------------------------------------------------
+// INITIALIZE FIREBASE
+// --------------------------------------------------------
+var config = {
+	apiKey: "AIzaSyAxMD6UBJ-ndugLrYPQJRI-iDJECM885Fc",
+	authDomain: "project-omega-watch.firebaseapp.com",
+	databaseURL: "https://project-omega-watch.firebaseio.com",
+	storageBucket: "project-omega-watch.appspot.com",
+	messagingSenderId: "476747424670"
+};
+firebase.initializeApp(config);
+
+// --------------------------------------------------------
+// ACCOUNT SIGN IN
+// --------------------------------------------------------
+function loginFire(){
+	//check if someone is already logged in
+	if(firebase.auth().currentUser){
+		//if someone is still logged in, then log them out.
+		firebase.auth().signOut();
+	//if someone isn't logged in, then get there info
+	} else {
+		var email = $("#email").val(); //get email value from input field
+		var password = $("#password").val(); //get password value from input field
+		console.log("email: "+email+" /password: "+password);
+		//IF statements that will deny input if requirements aren't met.
+	}
+	//Authenticate the sign in with the given email and password
+	//Passes email and password into sign in, then error handling is required.
+	firebase.auth().signInWithEmailAndPassword(email,password).catch(function(error){
+		//extremely basic error handling
+		console.log(error);
+	});
+}// +++ END +++ signInPush
+
+// --------------------------------------------------------
+// CREATE ACCOUNT
+// --------------------------------------------------------
+function registerFire(){
+	//if they register for the first time then we want to get there email and password
+	var email = $("#email").val();
+	var password = $("#password").val();
+	console.log("email: "+email+" /password: "+password);
+	//can add if statements here adding requirements (password minimum length, making sure the email ends in a @ extension, etc)
+
+	//run the create user function in firebase auth by passing in email and password
+	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error){
+		//should probably add better error handling here
+		console.log(error);
+	});
+}
+
+// --------------------------------------------------------
+// ACCOUNT SIGN OUT
+// --------------------------------------------------------
+function logoutFire(){
+	firebase.auth().signOut().then(function() {
+	  console.log('Signed Out');
+	}, function(error) {
+	  console.error('Sign Out Error', error);
+	});
+}
+
+// --------------------------------------------------------
+// EVENT LISTENERS
+// --------------------------------------------------------
+//if the login button is clicked, run the login in function
+$("#login").on("click", function(){
+	loginFire();
+});
+//if the register button is clicked, run the register function
+$("#register").on("click", function(){
+	registerFire();
+});
+//if the logout button is clicked, run the logout function
+$("#logout").on("click", function(){
+	logoutFire();
+});
+
+
+// --------------------------------------------------------
+// ADDITIONAL: Email verification and password reset
+// --------------------------------------------------------
+
+//--------------------------------------------------------
+// ADDITIONAL: Listen for auth state changes on load
+// --------------------------------------------------------
+
+ </script>
+</body>
+</html>
