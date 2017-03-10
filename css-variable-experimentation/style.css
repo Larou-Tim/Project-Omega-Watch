@@ -1,19 +1,46 @@
-html {
-	--primary-text-color: initial;
+body {
+/*	--primary-text-color: initial;
 	--secondary-text-color: initial;
 	--primary-background-color: initial;
 	--secondary-background-color: initial;
-	--vibrant-color: initial;
+	--vibrant-color: initial;*/
+
+	--primary-text-color: blue;
+	--secondary-text-color: red;
+	--primary-background-color: yellow;
+	--secondary-background-color: green;
+	--vibrant-color: pink;
+}
+/*
+[attribute^=value]	a[href^="https"]	Selects every <a> element whose href attribute value begins with "https"	3
+[attribute$=value]	a[href$=".pdf"]	Selects every <a> element whose href attribute value ends with ".pdf"	3
+[attribute*=value]	a[href*="w3schools"]	Selects every <a> element whose href attribute value contains the substring "w3schools"	3
+*/
+div[class$="1"] {
+	background-color: var(--primary-background-color);
+	color: var(--primary-text-color);
 }
 
-.row0 {
-
+div[class$="2"] {
+	background-color: var(--secondary-background-color);
+	color: var(--primary-text-color);
 }
 
-.row1 {
-
+div[class$="3"] {
+	background: linear-gradient(var(--primary-background-color), var(--secondary-background-color));	
+	color: var(--secondary-text-color);
 }
 
-.row2 {
+div[class$="4"] {
+	background-color: var(--vibrant-color);
+	color: var(--secondary-text-color);
+}
 
+
+h2 {
+	font-family: monospace;
+}
+
+p {
+	font-family: sans-serif;
 }
