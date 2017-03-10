@@ -8,13 +8,18 @@ Layout2 Stat Display
 <head>
 	<meta charset="UTF-8">
 	<title>Stat Display</title>
+	<!-- Attach reset css -->
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+	<!-- Attach grid system css -->
+	<link rel="stylesheet" type="text/css" href="../css/grid.css">
+	<!-- Attach custom styles css for layout2 -->
+	<link rel="stylesheet" type="text/css" href="layout2-stats.css">
 </head>
 <body>
 <!-- +++++++++++++++++++ -->
 <!-- BANNER -->
-<!-- CLASSES: pokeBanner, pokePanel, pokeButton, pokeHUD, pokeText -->
 <!-- +++++++++++++++++++ -->
-<div class="pokeBanner">
+<div class="row pokeBanner">
 	<h1>Stereotypical Small Banner to Add a Well Placed Quote</h1>
 	<h3>HOVER OVER ELEMENTS TO GRAB CODE ... or not, your choice 0_0</h3>
 </div>
@@ -22,40 +27,49 @@ Layout2 Stat Display
 <!-- +++++++++++++++++++ -->
 <!-- PANEL1 & PANEL2 -->
 <!-- +++++++++++++++++++ -->
-<div>
-	<div class="pokePanel">
-		<div class="pokePanel-title"><h1>Panel Title 1</h1></div><!--  PANEL TITLE -->
+<div class="row">
+	<div class="col-2"></div>
+	<div class="pokePanel col-3">
+		<div class="pokePanel-title"><h3>Panel Title 1</h3></div><!--  PANEL TITLE -->
 		<div class="pokePanel-content">
-			<div class="pokeButton"><button type="button">Option Text</button></div>
-			<div class="pokeButton"><button type="button">Option Text</button></div>
-			<div class="pokeButton"><button type="button">Option Text</button></div>
-			<div class="pokeButton"><button type="button">Option Text</button></div>
+			<div class="row">
+				<div><button class="pokeButton col-5" type="button">Option Text</button></div>
+				<div class="col-2"></div>
+				<div><button class="pokeButton col-5" type="button">Option Text</button></div>
+			</div>
+			<div class="row">
+				<div><button class="pokeButton col-5" type="button">Option Text</button></div>
+				<div class="col-2"></div>
+				<div><button class="pokeButton col-5" type="button">Option Text</button></div>
+			</div>
 		</div><!-- PANEL CONTENT -->
 	</div>
-	<div class="pokePanel">
-		<div class="pokePanel-title"><h1>Panel Title 2</h1></div><!--  PANEL TITLE -->
+	<div class="col-2"></div>
+	<div class="pokePanel col-3">
+		<div class="pokePanel-title"><h3>Panel Title 2</h3></div><!--  PANEL TITLE -->
 		<div class="pokePanel-content">
 			<div class="pokeText">Content Text</div>
 		</div><!-- PANEL CONTENT -->
 	</div>
+	<div class="col-2"></div>
 </div>
 
 <!-- +++++++++++++++++++ -->
 <!-- MAIN HUD DISPLAY OVERVIEW -->
 <!-- +++++++++++++++++++ -->
-<div class="pokeHUD">
-	<div>
+<div class="row pokeHUD">
+	<div class="col-3">
 		<a><p></p></a><!--  Stat -->
 		<a><p></p></a><!--  Stat -->
 		<a><p></p></a><!--  Stat -->
 		<a><p></p></a><!--  Stat -->
 	</div>
-	<div>
+	<div class="col-6">
 		<canvas>
 			<img/>
 		</canvas><!-- Add pokemon gif -->
 	</div>
-	<div>
+	<div class="col-3">
 		<a><p></p></a><!--  Stat -->
 		<a><p></p></a><!--  Stat -->
 		<a><p></p></a><!--  Stat -->
@@ -65,37 +79,67 @@ Layout2 Stat Display
 <!-- +++++++++++++++++++ -->
 <!-- BACKGROUND INFO -->
 <!-- +++++++++++++++++++ -->
-<div class="pokePanel">
-	<div class="pokePanel-title"><h1>Background Info</h1></div><!--  PANEL TITLE -->
-	<div class="pokePanel-content">
-		<div class="pokeText">Content Text</div>
-	</div><!-- PANEL CONTENT -->
+<div class="row">
+	<div class="col-2"></div>
+	<div class="pokePanel col-8">
+		<div class="pokePanel-title"><h3>Background Info</h3></div><!--  PANEL TITLE -->
+		<div class="pokePanel-content">
+			<div class="pokeText">Content Text</div>
+		</div><!-- PANEL CONTENT -->
+	</div>
+	<div class="col-2"></div>
 </div>
 
 <!-- +++++++++++++++++++ -->
 <!-- STRENGTHS & WEAKNESSES -->
 <!-- +++++++++++++++++++ -->
-<div>
-	<div class="pokePanel">	
-		<div class="pokePanel-title"><h1>Strengths</h1></div>
-		<div class="pokePanel-content">
-			<ul></ul>
+<div clas="row">
+	<div class="col-2"></div>
+	<div>
+		<div class="pokePanel col-3">	
+			<div class="pokePanel-title"><h3>Strengths</h3></div>
+			<div class="pokePanel-content">
+				<ul>
+					<li>Example</li>
+					<li>Example</li>
+					<li>Example</li>
+					<li>Example</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-2"></div>
+		<div class="pokePanel col-3">
+			<div class="pokePanel-title"><h3>Weaknesses</h3></div>
+			<div class="pokePanel-content">
+				<ul>
+					<li>Example</li>
+					<li>Example</li>
+					<li>Example</li>
+					<li>Example</li>
+				</ul>
+			</div>
 		</div>
 	</div>
-	<div class="pokePanel">
-		<div class="pokePanel-title"><h1>Weaknesses</h1></div>
-		<div class="pokepanel-content">
-			<ul></ul>
-		</div>
-	</div>
+	<div class="col-2"></div>
 </div>
 
 <!-- +++++++++++++++++++ -->
 <!-- FUN FACTS -->
 <!-- +++++++++++++++++++ -->
-<div>
-	<h1>Fun Facts</h1>
-</div>
-	
+<div class="row">
+	<div class="col-2"></div>
+	<div class="pokePanel col-8">	
+		<div class="pokePanel-title"><h3>Fun Facts</h3></div>
+		<div class="pokePanel-content">
+			<ul>
+				<li>Example</li>
+				<li>Example</li>
+				<li>Example</li>
+				<li>Example</li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-2"></div>
+</div>	
 </body>
 </html>

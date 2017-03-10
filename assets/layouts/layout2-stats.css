@@ -1,7 +1,18 @@
 /*-------------------------------*/
 /*POKE PRESENTATION*/
 /*-------------------------------*/
-.pokeBanner{}
+body{
+	background-color:grey;/*set by poke script*/
+}
+.pokeBanner{
+	padding:15px 0px 15px 0px;
+	margin:0px 0px 10px 0px;
+	/*border-style:solid;
+	border-width:5px 0px 0px 0px;*/
+	border-color:blue;/*Set by poke script*/
+	text-align:center;
+	color:purple;/*set by poke script*/
+}
 .pokeHUD{
 	background-image:;
 }
@@ -10,22 +21,42 @@
 /*POKE PANELS*/
 /*-------------------------------*/
 .pokePanel{
-	box-shadow:2px 2px 2px #888888;
+	margin:0px 0px 20px 0px;
+	box-shadow:2px 2px 2px purple;/*Set by poke script*/
 }
 [class*='pokePanel-']{
 
 }
-.pokePanel-title{}
-.pokePanel-content{}
+.pokePanel-title{
+	padding:5px 5px 5px 5px;
+	border-style:solid;
+	border-width:2px 2px 2px 2px;
+	border-color:blue;/*Set by poke script*/
+	color:purple;/*set by poke script*/
+}
+.pokePanel-content{
+	padding:15px 5px 5px 5px;
+	border-style:solid;
+	border-width:0px 2px 2px 2px;
+	border-color:blue;/*Set by poke script*/
+}
 
 /*-------------------------------*/
 /*POKE TEXTUAL THINGS*/
 /*-------------------------------*/
-.pokeText{}
+.pokeText{
+	color:red;/*set by poke script*/
+}
 
 /*-------------------------------*/
 /*POKE ACTIONS*/
 /*-------------------------------*/
 .pokeButton{
-	box-shadow:2px 2px 2px #888888;
+	padding:5px 10px 5px 10px;
+	margin:5px auto 5px auto;
+	border:none;
+	box-shadow:2px 2px 2px purple;/*Set by poke script*/
+	background-color:yellow;/*set by poke script*/
+	color:red;/*set by poke script*/
+	display:inline-block;
 }
