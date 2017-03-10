@@ -1,0 +1,39 @@
+/* Here we initialize the CSS Custom Property variables. They must be written with the two dashes. The rest follows class and ID naming convention. The "initial" property can be anything.*/
+html {
+
+	--primary-text-color: initial;
+	--secondary-text-color: initial;
+	--primary-background-color: initial;
+	--secondary-background-color: initial;
+	--vibrant-color: initial;
+}
+
+/* To call, simply use the "var()" function in place of property value. */
+div[class$="1"] {
+	background-color: var(--primary-background-color);
+	color: var(--primary-text-color);
+}
+
+div[class$="2"] {
+	background-color: var(--secondary-background-color);
+	color: var(--primary-text-color);
+}
+
+div[class$="3"] {
+	background: linear-gradient(var(--primary-background-color), var(--secondary-background-color));	
+	color: var(--secondary-text-color);
+}
+
+div[class$="4"] {
+	background-color: var(--vibrant-color);
+	color: var(--secondary-text-color);
+}
+
+
+h2 {
+	font-family: monospace;
+}
+
+p {
+	font-family: sans-serif;
+}
