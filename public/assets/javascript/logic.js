@@ -16,17 +16,16 @@ for (var j = 0 ; j < initLoadImages.length; j++) {
   disableBool = true;
   pokemonToFind = initLoadImages[j];
   imageSearch(pokemonToFind);
-  console.log("Oh hai");
+  
 
 }
 
 
 
 $("body").on("click",".pokemonBox", function() {
-  console.log(this);
-  console.log($(this).attr("pokemonName"));
+ 
   var curPokemonPaletter = $(this).attr("pokemonName");
-  console.log(pokemonPalette[curPokemonPaletter]);
+
   generatePaletteDOM(pokemonPalette[curPokemonPaletter]);
 
 })
@@ -46,7 +45,7 @@ $("#search-button").on("click",function() {
 
 function imageSearch(val) {
  
-    // console.log(pokemonToFind);
+  
   
     $.ajax({
           url: (queryURL + val),
@@ -54,8 +53,7 @@ function imageSearch(val) {
         }).done(function(response) { 
            pokemonName = response.name;
            pokemonPicture = response.sprites.front_default;
-           console.log(pokemonPicture);
-          // console.log(pokemonPicture);
+          
           try {
             createPokemon(pokemonName,pokemonPicture);
           }
@@ -139,10 +137,6 @@ function createPokemon(name,picture) {
           colorBox.css("background-color",rbgCode);
           leftColRow.append(colorBox);
         }
-
-        // console.log(colorThief.getColor(img2));
-        // console.log(colorThief.getPalette(img2));
-
       
       });
       console.log(colorPal);
@@ -152,9 +146,9 @@ function createPokemon(name,picture) {
 
       rightCol.append(pokemonImage);
       leftCol.append(leftColRow);
-      // midCol.append(midColRow);
+      
       rowPlace.append(leftCol);
-      // rowPlace.append(midCol);
+     
       rowPlace.append(rightCol);
       pokemonSpot.append(rowPlace);
       pokemonHolder.attr("pokemonName",name);
