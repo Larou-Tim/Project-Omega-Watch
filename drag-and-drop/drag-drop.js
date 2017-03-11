@@ -15,20 +15,26 @@ $(document).ready(function(){
 
 		for (var i = 0; i < colorsArray.length; i++) {
 			var outputColor = $("<div>");
+			var outputContainer = $("<div>");
+
+			// Generating the color swatch.
 			// Adds class for later use and attributes for storing color value.
 			outputColor.addClass("palette-color");
 			outputColor.attr("data-color-value", colorsArray[i]);
-			outputColor.text(colorsArray[i]);
 			outputColor.css("background-color", colorsArray[i]);
 
 			// Add drag function with jQueryUI API
 			// This uses functionality from HTML5 native drag and drop.
+			// Clone retains the position of the original color
 			outputColor.draggable({
 				helper: "clone",
-				revert: true
 			});
 
-			$(".palette-box").append(outputColor);
+			// Adding classes and modifying outpur container DOM.
+			outputContainer.append(outputColor);
+			outputContainer.addClass("inline-block swatch-container");
+			outputContainer.append($("<p>").text(colorsArray[i]).addClass("text-center"));
+			$(".palette-box").append(outputContainer);
 		}	
 	}
 
