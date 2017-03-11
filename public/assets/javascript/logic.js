@@ -12,17 +12,15 @@ initLoadImages = [1,9,150,'magikarp'];
 
 var pokemonPalette = {};
 
-
-// imageSearch(12);
-// setTimeout(function(){
-//  disableBool = true;
 for (var j = 0 ; j < initLoadImages.length; j++) {
   disableBool = true;
   pokemonToFind = initLoadImages[j];
   imageSearch(pokemonToFind);
+  console.log("Oh hai");
 
 }
-// }, 2000);
+
+
 
 $("body").on("click",".pokemonBox", function() {
   console.log(this);
