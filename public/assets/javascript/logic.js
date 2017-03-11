@@ -74,7 +74,7 @@ function createPokemon(name,picture) {
 
       var colorPal = [];
       var pokemonHolder = $("<div>");
-      pokemonHolder.attr("class","panel panel-primary pokemonBox");
+      pokemonHolder.attr("class","panel panel-info pokemonBox");
 
       var pokemonSpot = $("<div>");
       pokemonSpot.attr("class","panel-body");
