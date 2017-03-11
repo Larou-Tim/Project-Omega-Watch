@@ -12,11 +12,15 @@ html {
 
 .example-markup h1{
 	color: var(--header-color);
+	font-family: serif;
+	font-weight: bolder;
 
 }
 
 .example-markup p {
 	color: var(--paragraph-color);
+	font-family: sans-serif;
+	font-weight: bold;
 }
 
 div.palette-color {
