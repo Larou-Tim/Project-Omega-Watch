@@ -35,7 +35,11 @@ $(document).ready(function(){
 
 	$(".color-holder").droppable();
 	$(".color-holder").on("drop", function(event, ui){
-		console.log($(this).attr("data-css-var"));
+		var outputCSSVar = $(this).attr("data-css-var");
+		var outputCSSColor = ui.draggable.attr("data-color-value");
+		
+		$(this).css("background-color", outputCSSColor);
+		$("html").get(0).style.setProperty(outputCSSVar, outputCSSColor);
 	});
 
 	generatePaletteDOM(colors);
