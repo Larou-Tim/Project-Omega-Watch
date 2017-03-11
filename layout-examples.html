@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Layout examples!</title>
+		<link rel="stylesheet" href="assets/css/reset.css">
 		<!-- jQuery CDN -->
 		<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
 		<!-- Latest compiled and minified CSS -->
@@ -15,8 +16,25 @@
 		<link rel="stylesheet" href="assets/css/reset.css">
 		<!-- Global stylesheet -->
 		<link rel="stylesheet" href="assets/css/style.css">
+		<!-- Fire js used for user authentication -->
+		<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+		<script src="assets/javascript/fire.js"></script>
+		<link rel="stylesheet" href="assets/css/fireStyle.css">
 	</head>
 	<body>
+		<div class="staticBar">
+			<div class="navi">
+				<a id="search">Search  |</a>
+				<a id="layouts">Layouts</a>
+			</div>
+			<div class="userAuth">
+				<input id="email" type="text" placeholder="Email"/>
+				<input id="password" type="password" placeholder="Password"/>
+				<button id="register">Register</button>
+				<button id="login">Login</button>
+				<button id="logout">Sign Out</button>
+			</div>
+		</div>
 		<div class="container">
 			<h2>Example Layouts</h2>
 			<p>Check out these layouts, does this Pokeman work for you??</p>

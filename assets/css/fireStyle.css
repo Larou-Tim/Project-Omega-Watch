@@ -1,0 +1,44 @@
+/*project-omega-watch
+Layout2 Stat Display
+@version 1
+@author KcK
+11 March 2017*/
+/*-------------------------------*/
+/*FireBase Styling*/
+/*-------------------------------*/
+.staticBar{
+	position:static;
+	background-color:rgba(230, 0, 18, .2);
+}
+.navi{
+	padding:10px 10px 10px 10px;
+	float:left;
+}
+#search{}
+#layouts{}
+.userAuth{
+	padding:10px 10px 10px 10px;
+	position:relative;
+	left:30%; /*change for media devices*/
+}
+#email, #password{
+	border-width:2px 2px 2px 2px;
+	border-style:solid;
+	border-color:black;
+}
+#register, #login, #logout{
+	background-color:white;
+	border-width:2px 2px 2px 2px;
+	border-style:solid;
+	border-color:black;
+}
+#register:hover, #login:hover, #logout:hover, #email:hover, #password:hover{
+	box-shadow: 2px 2px 2px black;
+}
+#register:active, #login:active, #logout:active{
+	box-shadow: 2px 2px 2px red;
+	border-color:red;
+}
+#register:focus, #login:focus, #logout:focus, #email:focus, #password:focus{
+	outline:0;
+}
