@@ -8,7 +8,7 @@ var queryURL =  "https://pokeapi.co/api/v2/pokemon/";
 var pokemonName = false;
 var disableBool;
 // var pokemonPicture;
-initLoadImages = [12,150,"cubone"];
+initLoadImages = [1,9,150,'magikarp'];
 
 var pokemonPalette = {};
 
@@ -16,12 +16,12 @@ var pokemonPalette = {};
 // imageSearch(12);
 // setTimeout(function(){
 //  disableBool = true;
-// for (var j = 0 ; j < initLoadImages.length; j++) {
-//   disableBool = true;
-//   pokemonToFind = initLoadImages[j];
-//   imageSearch(pokemonToFind);
+for (var j = 0 ; j < initLoadImages.length; j++) {
+  disableBool = true;
+  pokemonToFind = initLoadImages[j];
+  imageSearch(pokemonToFind);
 
-// }
+}
 // }, 2000);
 
 $("body").on("click",".pokemonBox", function() {
