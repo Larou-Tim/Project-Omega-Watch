@@ -79,12 +79,9 @@ $(document).ready(function(){
 		$("html").get(0).style.setProperty(outputCSSVar, outputCSSColor);
 	});
 
-	// Initial Palette Generation
+	// Initial Palette Generation, DOM generation
 	generatePaletteDOM(colors);
 	generateStyleDOM(cssVariableObject);
-
-
-
 
 
 });
