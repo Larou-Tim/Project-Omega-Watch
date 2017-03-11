@@ -1,11 +1,16 @@
+// Require JqueryUI in HTML head.
+// Require (for now), pre-declared CSS Variables in :root or html selector in CSS file.
+
 $(document).ready(function(){
 	// Initialize a hard coded array of colors
-	var colors = ["#1D3E8C", "#413C58", "#D9F9A5", "#FFEBD6", "#A3C4BC"];
+	var colors = ["#1D3E8C", "#d43C58", "#D9F9A5", "#FFEBD6", "#A3C4BC"];
 
 	// Initialize a hard coded object of CSS Variable "human" name and Logical name
-	// var cssVariableObject = {
-	// 	"Paragraph Text": "--para"
-	// }
+	var cssVariableObject = {
+		"Paragraph Text": "--paragraph-color",
+		"Background Color": "--bg-color",
+		"Header Color": "--header-color"
+	}
 
 	// Generate the color to DOM elements and append to palette-box
 	// Function accepts an array of colors.
@@ -38,18 +43,33 @@ $(document).ready(function(){
 		}	
 	}
 
-	function generateStyleContainer(styleObject){
+	// Function for generating drop in boxes corresponding to CSS variables, as well as a display name.
+	function generateStyleDOM(styleObject){
+		$(".style-container").empty();
+		var elementNameArray = Object.keys(styleObject);
 
+		// Iterate over names of keys in objects.
+		for (var i = 0; i < elementNameArray.length; i++) {
+			var outputContainer = $("<div>").addClass("style-box inline-block");
+			var outputColorHolder = $("<div>").addClass("color-holder");
+			outputColorHolder.attr("data-css-var", styleObject[elementNameArray[i]]);
+
+			// Initialize Drop functionality
+			outputColorHolder.droppable();
+
+			// Building the output DOM object
+			outputContainer.append($("<p>").text(elementNameArray[i]).addClass("element-affected text-center"));
+			outputContainer.append(outputColorHolder);
+
+			$(".style-container").append(outputContainer);
+		}
 	}
-
-	// Adds drop functionality to DOM element.
-	$(".color-holder").droppable();
 
 	// Event handling for dropping in colors. 
 	// ui is a jqueryUI object of Jquery objects. 
 	// ui.draggable selects the dragged element.
 	// We take it's color value.
-	$(".color-holder").on("drop", function(event, ui){
+	$(document).on("drop", ".color-holder", function(event, ui){
 		var outputCSSVar = $(this).attr("data-css-var");
 		var outputCSSColor = ui.draggable.attr("data-color-value");
 		
@@ -61,6 +81,7 @@ $(document).ready(function(){
 
 	// Initial Palette Generation
 	generatePaletteDOM(colors);
+	generateStyleDOM(cssVariableObject);
 
 
 

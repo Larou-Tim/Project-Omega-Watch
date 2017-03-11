@@ -46,6 +46,13 @@ div.palette-color {
 	height: 95px;
 	border: 2px solid #444444;
 	border-radius: 3px;
+	margin: 0 auto;
+}
+
+.style-box {
+	margin: 0 10px;
+	border: 1px solid #dddddd;
+	padding: 10px;
 }
 
 .inline-block {
