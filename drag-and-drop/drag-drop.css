@@ -3,10 +3,12 @@ html {
 	--paragraph-color: initial;
 	--header-color: initial;
 	--bg-color: initial;
+	--border-color: initial;
 }
 
 .example-markup {
 	background-color: var(--bg-color);
+
 
 }
 
@@ -14,6 +16,7 @@ html {
 	color: var(--header-color);
 	font-family: serif;
 	font-weight: bolder;
+	border: 3px solid var(--border-color);
 
 }
 
