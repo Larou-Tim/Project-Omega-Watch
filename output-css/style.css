@@ -4,3 +4,7 @@ html {
 	--header-text-color: initial;
 	
 }
+
+#output-text {
+	display: none;
+}

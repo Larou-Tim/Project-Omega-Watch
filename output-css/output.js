@@ -23,12 +23,25 @@ $(document).ready(function(){
     //     document.body.removeChild(event.target);
     // }
 
+
+    // When hidden, it still downloads content...
+    $("#output-text").val("fishballs");
+    console.log(document.getElementById("output-text").style);
+    console.log($("#output-text")[0].style);
+
     function saveAsStyleSheet(){
         var outputContent = $("#output-text").val();
-        var outputBlob = new Blob([outputContent], {type"text/css"});
+        console.log('outputContent', typeof outputContent);
+        
+        var outputBlob = new Blob([outputContent], {type:"text/css"});
         var outputURL = window.URL.createObjectURL(outputBlob);
 
-        var downloadLink 
+        var downloadLink = $("#download-link");
+        downloadLink.attr("download", "output");
+        downloadLink.attr("href", outputURL);
+
     }
+
+    $("#download-link").on("click", saveAsStyleSheet);
      
 });
