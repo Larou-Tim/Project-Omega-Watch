@@ -8,6 +8,11 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" integrity="sha256-7VVaJ5GDwFQiLIc+eNksQLUSSY5JNZtqv9o2BI8UGYg=" crossorigin="anonymous" />
 		<!-- jQuery CDN -->
 		<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+		<!-- jQuery UI CDN -->
+		<script
+		src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+		integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+		crossorigin="anonymous"></script>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<!-- Optional theme -->
@@ -18,11 +23,42 @@
 		<script src="output.js"></script>
 	</head>
 	<body>
-
-	<textarea id="output-text" placeholder="Bungalow"></textarea>
-	<button type="submit" id="submit-create-file">Create This</button>
-	<a href="" download="" id="download-link">Download File</a>
-
+		<div class="container">
+			<!-- Headers and Style -->
+			<div class="panel panel-default">
+				<div class="panel-body example-markup">
+					<h1>Check it.</h1>
+					<p>I ain't a killer but don't push me
+						Revenge is like the sweetest joy next to gettin' cats <br>
+						Picture paragraphs unloaded, wise words bein' quoted
+						Peeped the weakness int he rap game and sewed it <br>
+						Bow down, pray to God hoping that he's listenin'
+						Seein' friends comin' for me, to my diamonds, when they glistenin' <br>
+						Now pay attention, rest in peace father
+						I'm a ghost in these killin' fields
+						Hail Mary catch me if I go, let's go deep inside <br>
+						The solitary mind of a madman who screams in the dark
+						Evil lurks, enemies, see me flee
+					Activate my hate, let it break, to the flame</p>
+				</div>
+			</div>
+			<!-- Draggable colors -->
+			<div class="panel panel-default">
+				<div class="panel-body palette-box"></div>
+			</div>
+			<!-- Drop container -->
+			<div class="panel panel-default">
+				<div class="panel-body style-container"></div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<textarea id="output-text" placeholder="Bungalow"></textarea>
+					<button type="submit" id="submit-create-file">Create This</button>
+					<a href="" download="" id="download-link">Download File</a>
+				</div>
+			</div>
+		</div>
 		
 	</body>
 </html>
