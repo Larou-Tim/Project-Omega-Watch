@@ -9,7 +9,8 @@ $(document).ready(function(){
 	var cssVariableObject = {
 		"Paragraph Text": "--paragraph-color",
 		"Background Color": "--bg-color",
-		"Header Color": "--header-color"
+		"Header Color": "--header-color",
+		"Border Color": "--border-color"
 	}
 
 	// Generate the color to DOM elements and append to palette-box
