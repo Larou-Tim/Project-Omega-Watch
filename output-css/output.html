@@ -8,6 +8,11 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" integrity="sha256-7VVaJ5GDwFQiLIc+eNksQLUSSY5JNZtqv9o2BI8UGYg=" crossorigin="anonymous" />
 		<!-- jQuery CDN -->
 		<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+		<!-- jQuery UI CDN -->
+		<script
+		src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+		integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+		crossorigin="anonymous"></script>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<!-- Optional theme -->
@@ -18,11 +23,45 @@
 		<script src="output.js"></script>
 	</head>
 	<body>
-
-	<textarea id="output-text" placeholder="Bungalow"></textarea>
-	<button type="submit" id="submit-create-file">Create This</button>
-	<a href="" download="" id="download-link">Download File</a>
-
+		<div class="container">
+			<!-- Headers and Style -->
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="example-markup">
+						<h1>Check it.</h1>
+						<p>
+							Jessie: Prepare for trouble! <br>
+							James: Make it double! <br>
+							Jessie: To protect the world with devastation! <br>
+							James: To unite all peoples within our nation! <br>
+							Jessie: To denounce the evil of truth and love! <br>
+							James: To extend our reach to the stars above! <br>
+							Jessie: Jessie! <br>
+							James: James! <br>
+							Jessie: Team Rocket blast off at the speed of light! <br>
+							James: Surrender now or prepare to fight! <br>
+						Meowth: Meowth. That's right!</p>
+					</div>
+				</div>
+			</div>
+			<!-- Draggable colors -->
+			<div class="panel panel-default">
+				<div class="panel-body palette-box"></div>
+			</div>
+			<!-- Drop container -->
+			<div class="panel panel-default">
+				<div class="panel-body style-container"></div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<!-- <textarea id="output-text" placeholder="Bungalow"></textarea> -->
+					Generate CSS before Downloading.
+					<button type="submit" id="submit-create-file" data-toggle="popover" data-content="CSS generated!" data-trigger="focus" data-placement="bottom">Generate CSS</button>
+					<a href="" download="" id="download-link">Download File</a>
+				</div>
+			</div>
+		</div>
 		
 	</body>
 </html>
