@@ -1,7 +1,7 @@
 // Require JqueryUI in HTML head.
 // Require (for now), pre-declared CSS Variables in :root or html selector in CSS file.
 
-$(document).ready(function(){
+// $(document).ready(function(){
 	// Initialize a hard coded array of colors
 	var colors = ["#1D3E8C", "#d43C58", "#D9F9A5", "#FFEBD6", "#A3C4BC"];
 
@@ -12,7 +12,8 @@ $(document).ready(function(){
 		"Header Color": "--header-color"
 	}
 
-	// Generate the color to DOM elements and append to palette-box
+
+ 	// Generate the color to DOM elements and append to palette-box
 	// Function accepts an array of colors.
 	function generatePaletteDOM(colorsArray) {
 		// If relevant, clears container.
@@ -87,4 +88,4 @@ $(document).ready(function(){
 
 
 
-});
+// });

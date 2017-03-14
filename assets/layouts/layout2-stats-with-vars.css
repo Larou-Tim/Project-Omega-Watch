@@ -1,22 +1,27 @@
-/*project-omega-watch
-Layout2 Stat Display
-@version 1
-@author KcK
-7 March 2017*/
+html {
+	--paragraph-text-color: red;
+	--div-text-color: initial;
+	--header-text-color: purple;
+	--body-bg-color: grey;
+	--div-bg-color: yellow;
+	--border-color: blue;
+	--div-box-shadow-color: purple;
+}
+
 /*-------------------------------*/
 /*POKE PRESENTATION*/
 /*-------------------------------*/
 body{
-	background-color:grey;/*set by poke script*/
+	background-color: var(--body-bg-color);/*set by poke script*/
 }
 .pokeBanner{
 	padding:15px 0px 15px 0px;
 	margin:0px 0px 10px 0px;
 	border-style:solid;
 	border-width:5px 0px 0px 0px;
-	border-color:blue;/*Set by poke script*/
+	border-color: var(--border-color);/*Set by poke script*/
 	text-align:center;
-	color:purple;/*set by poke script*/
+	color: var(--header-text-color);/*set by poke script*/
 }
 .pokeHUD{
 	background-image:;
@@ -27,7 +32,7 @@ body{
 /*-------------------------------*/
 .pokePanel{
 	margin:0px 0px 20px 0px;
-	box-shadow:2px 2px 2px purple;/*Set by poke script*/
+	box-shadow:2px 2px 2px var(--div-box-shadow-color);/*Set by poke script*/
 }
 [class*='pokePanel-']{
 
@@ -36,21 +41,21 @@ body{
 	padding:5px 5px 5px 5px;
 	border-style:solid;
 	border-width:2px 2px 2px 2px;
-	border-color:blue;/*Set by poke script*/
-	color:purple;/*set by poke script*/
+	border-color: var(--border-color);/*Set by poke script*/
+	color: var(--header-text-color);/*set by poke script*/
 }
 .pokePanel-content{
 	padding:15px 5px 5px 5px;
 	border-style:solid;
 	border-width:0px 2px 2px 2px;
-	border-color:blue;/*Set by poke script*/
+	border-color: var(--border-color);/*Set by poke script*/
 }
 
 /*-------------------------------*/
 /*POKE TEXTUAL THINGS*/
 /*-------------------------------*/
 .pokeText{
-	color:red;/*set by poke script*/
+	color: var(--paragraph-text-color);/*set by poke script*/
 }
 
 /*-------------------------------*/
@@ -60,8 +65,8 @@ body{
 	padding:5px 10px 5px 10px;
 	margin:5px auto 5px auto;
 	border:none;
-	box-shadow:2px 2px 2px purple;/*Set by poke script*/
-	background-color:yellow;/*set by poke script*/
-	color:red;/*set by poke script*/
+	box-shadow:2px 2px 2px var(--div-box-shadow-color);/*Set by poke script*/
+	background-color: var(--div-bg-color);/*set by poke script*/
+	color: var(--paragraph-text-color);/*set by poke script*/
 	display:inline-block;
 }
