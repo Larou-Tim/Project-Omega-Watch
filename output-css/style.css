@@ -1,31 +1,32 @@
 /* Initialize the CSS variables and set the variable mark up*/
 html {
 	/* These are for the example*/
-	--paragraph-color: initial;
-	--header-color: initial;
-	--bg-color: initial;
-	--border-color: initial;
-
-	/* These are for prototyping the CSS output file.*/
 	--paragraph-text-color: initial;
 	--div-text-color: initial;
 	--header-text-color: initial;
+	--body-bg-color: initial;
+	--div-bg-color: initial;
+	--border-color: initial;
+	--div-box-shadow-color: initial;
 	
 }
 
 .example-markup {
-	background-color: var(--bg-color);
+	background-color: var(--body-bg-color);
+	border: 3px solid var(--border-color);
+	box-shadow: 5px 5px var(--div-box-shadow-color);
 }
 
 .example-markup h1{
-	color: var(--header-color);
+	color: var(--header-text-color);
+	background-color: var(--div-bg-color);
 	font-family: serif;
 	font-weight: bolder;
-	border: 3px solid var(--border-color);
 }
 
 .example-markup p {
-	color: var(--paragraph-color);
+	color: var(--paragraph-text-color);
+	background-color: var(--div-bg-color);
 	font-family: sans-serif;
 	font-weight: bold;
 }
@@ -65,6 +66,6 @@ div.palette-color {
 	display: inline-block;
 }
 
-#output-text {
+/*#output-text {
 	display: none;
-}
+}*/
