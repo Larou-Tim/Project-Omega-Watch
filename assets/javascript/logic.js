@@ -34,24 +34,17 @@ $(document).ready(function() {
   });
 
  $("body").on("mouseenter", ".pokemonBox", function() {
-    // hover starts code here 
-    // console.log($(this).find("first-child"));
-    // console.log($(':first-child', this));
-    // console.log($(this));
-    $(this).css("opacity", "0.3");
+    // starts hover effect
+    $(".panel-body",this).css("opacity", "0.3");
     $(".middle", this).css("opacity", "1");
-    // $(this).css("opacity", "0.3");
 
 
 });
 
 $("body").on("mouseleave", ".pokemonBox", function() {
-    // hover ends code here
-    console.log($(this).children());
-    console.log($(':first-child', this));
-    // console.log($(this));
+    // removes hover
     $('.middle', this).css("opacity", "0");
-    $(this).css("opacity", "1");
+    $(".panel-body",this).css("opacity", "1");
 });
 
   //ajax serach request that reaches to pokeAPI 

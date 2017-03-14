@@ -17,6 +17,10 @@ body {
 	
 }
 
+.navbar {
+	background-color: #00bc8c;
+}
+
 .imgSpot {
 	float: left;
 }
@@ -47,7 +51,7 @@ body {
 }
 
 .text {
-  background-color: #4CAF50;
+  background-color: #00bc8c;
   color: white;
   font-size: 16px;
   padding: 16px 32px;
