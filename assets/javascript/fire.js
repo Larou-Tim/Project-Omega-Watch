@@ -20,7 +20,7 @@ $(document).ready(function(){
   firebase.initializeApp(config);
 
   // --------------------------------------------------------
-  // CREATE ACCOUNT
+  // ACCOUNT SIGN IN
   // --------------------------------------------------------
   function loginFire(){ 
     var email = $("#email").val();
@@ -37,7 +37,7 @@ $(document).ready(function(){
   }
 
   // --------------------------------------------------------
-  // ACCOUNT SIGN IN
+  // CREATE ACCOUNT
   // --------------------------------------------------------
   function registerFire(){
     if(firebase.auth().currentUser){
@@ -45,8 +45,8 @@ $(document).ready(function(){
     } else {
       var email = $("#email").val();
       var password = $("#password").val();
-	  $("#message").html("You are registered!");
-	  unhide();
+	    $("#message").html("You are registered!");
+	    unhide();
     }
     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
       // Handle Errors here.
@@ -63,7 +63,7 @@ $(document).ready(function(){
   function logoutFire(){  
     firebase.auth().signOut().then(function() {
       $("#message").html("You are signed out!");
-      unhide();
+      signedOut();
     }, function(error) {
       $("#message").html(error);
       unhide();
@@ -102,6 +102,13 @@ $(document).ready(function(){
     $("#login").css("visibility", "hidden");
     $("#email").css("visibility", "hidden");
     $("#password").css("visibility", "hidden");
+    $("#message").css("visibility", "visible");
+  }
+  function signedOut(){
     unhide();
+    $("#register").css("visibility", "visible");
+    $("#login").css("visibility", "visible");
+    $("#email").css("visibility", "visible");
+    $("#password").css("visibility", "visible");
   }
 });
