@@ -7,7 +7,6 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="assets/css/drag-drop.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css" rel="stylesheet" integrity="sha384-S7YMK1xjUjSpEnF4P8hPUcgjXYLZKK3fQW1j5ObLSl787II9p8RO9XUGehRmKsxd" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	 <script src="https://code.jquery.com/jquery-3.1.1.min.js">    </script>
@@ -15,25 +14,43 @@
     crossorigin="anonymous"></script>
    
     <script type="text/javascript"   src="./assets/javascript/logic.js"></script>
-     <script  type="text/javascript" src="./assets/javascript/drag-drop.js"></script>
+     <script  type="text/javascript" src="./assets/javascript/output.js"></script>
     <script src="assets/javascript/color-thief.min.js"></script>
     
      <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <!-- Fire js/css used for user authentication -->
+    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script src="assets/javascript/fire.js"></script>
+    <link rel="stylesheet" href="assets/css/fireStyle.css">
+    <!-- ++++++++++++++++++++++++ -->
     
 
 
 </head>
 
 <body>
+<!-- ++++++++++++++++++++++++ -->
+<!-- start NAV-BAR -->
  <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Pokemon Theme Tool</a>
     </div>
+    <!-- USER LOGIN on Nav Bar @kck-->
+    <div class="userAuth">
+      <input id="email" type="text" placeholder="Email"/>
+      <input id="password" type="password" placeholder="Password"/>
+      <button id="register">Register</button>
+      <button id="login">Login</button>
+      <button id="logout">Sign Out</button>
+      <output id="message"></output> <!-- If error, display here -->
+    </div>
+    <!-- +++++ -->
   </div>
   </nav>
-
 <div class="container">
+<!-- ++++++++++++++++++++++++ -->
 
   <div class="row">
       <div class="col-lg-6">

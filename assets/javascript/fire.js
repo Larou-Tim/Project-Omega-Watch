@@ -26,7 +26,7 @@ $(document).ready(function(){
     var email = $("#email").val();
     var password = $("#password").val();
     $("#message").html("Logged in as "+email);
-    unhide();
+    hide();
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
@@ -96,5 +96,12 @@ $(document).ready(function(){
   // --------------------------------------------------------
   function unhide(){
   	$("#message").css("visibility", "visible");
+  }//makes message form visible to display error message
+  function hide(){//hide login buttons
+    $("#register").css("visibility", "hidden");
+    $("#login").css("visibility", "hidden");
+    $("#email").css("visibility", "hidden");
+    $("#password").css("visibility", "hidden");
+    unhide();
   }
 });
