@@ -111,4 +111,41 @@ $(document).ready(function(){
     $("#email").css("visibility", "visible");
     $("#password").css("visibility", "visible");
   }
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // --------------------------------------------------------
+  // DATABASE: Trending, Popularity, Profile
+  // --------------------------------------------------------
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  //INITIALIZE
+  var database = firebase.database();
+  //recently most looked at
+  var trending = {};
+  var trendName = "";
+  var trendAmount = 0;
+  //most saved to profile
+  var popularity = [];
+
+  // --------------------------------------------------------
+  // hoverLook search button clicked
+  // --------------------------------------------------------
+  $("body").on("click", ".hoverLook", function(){
+    //get the name of pokemon from parent box
+    trendName = $(this).parent().attr("pokemonName");
+    //get the amount already looked @ from database if exists
+    //add 1 to trend amount
+    //get the current top 4 looked at & compare trend amount
+    //if it is greater than the 4th spot, then replace #4
+    //if it already exists check the spot above it to see if swap
+    //then update firebase database
+    database.ref().push({
+    });
+  });
+
+  // --------------------------------------------------------
+  // hoverSave search button clicked
+  // --------------------------------------------------------
+  //same concept as hoverLook but permanent & on save
+
+  //THEN add functions for storing the colors to the user id
+
 });
