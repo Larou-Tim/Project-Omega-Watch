@@ -56,3 +56,74 @@ body {
   font-size: 16px;
   padding: 16px 32px;
 }
+/* Initialize the CSS variables and set the variable mark up*/
+html {
+	/* These are for the example*/
+	--paragraph-text-color: initial;
+	--div-text-color: initial;
+	--header-text-color: initial;
+	--body-bg-color: initial;
+	--div-bg-color: initial;
+	--border-color: initial;
+	--div-box-shadow-color: initial;
+	
+}
+
+.example-markup {
+	background-color: var(--body-bg-color);
+	border: 3px solid var(--border-color);
+	box-shadow: 5px 5px var(--div-box-shadow-color);
+}
+
+.example-markup h1{
+	color: var(--header-text-color);
+	background-color: var(--div-bg-color);
+	font-family: serif;
+	font-weight: bolder;
+}
+
+.example-markup p {
+	color: var(--paragraph-text-color);
+	background-color: var(--div-bg-color);
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+div.palette-color {
+	width: 80px;
+	height: 80px;
+	margin: 0 2px 0 2px;	
+}
+
+.swatch-container {
+	border: 3px double #4a4a4a;
+	padding: 4px;
+}
+
+/*Automatically applied class when dragging.*/
+.ui-draggable-dragging {
+	border: 2px dotted #555555;
+	border-radius: 1px;
+}
+
+.color-holder {
+	width: 95px;
+	height: 95px;
+	border: 2px solid #444444;
+	border-radius: 3px;
+	margin: 0 auto;
+}
+
+.style-box {
+	margin: 0 10px;
+	border: 1px solid #dddddd;
+	padding: 10px;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+/*#output-text {
+	display: none;
+}*/
