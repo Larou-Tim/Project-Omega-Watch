@@ -38,8 +38,6 @@ $(document).ready(function() {
     generatePaletteDOM(pokemonPalette[curPokemonPaletter]);
     generateStyleDOM(cssVariableObject);
     $("#lowerBody").slideDown("slow");
-
-
   });
 
 // --------------------------------------------------------
@@ -64,12 +62,11 @@ $(document).ready(function() {
     function searchHandler () {
        if (!disableBool) {
           disableBool = true;
-          
 
           var pokemonToFind = $("#search-param").val().trim().toLowerCase();
           var indexPokemon = alreadySearched.indexOf(pokemonToFind);
 
-
+          console.log(indexPokemon, alreadySearched );
 
           if (pokemonToFind != "" && indexPokemon == -1) {
             imageSearch(pokemonToFind);
@@ -77,10 +74,11 @@ $(document).ready(function() {
             $("#search-param").attr('disabled','""');
             $("#search-param").attr('placeholder','Please Wait');
           }
-
+            //updates placeholder if pokemon has previously been searched
           else if (indexPokemon != -1) {
             $("#search-param").val("");
             $("#search-param").attr('placeholder','Please choose a new pokemon');
+            disableBool = false;
           }
         }
     }
@@ -123,7 +121,7 @@ $("#create-file").on("click", function(){
              
              //creating searched images and prevent duplicates (as it errors)
              alreadySearched.push(pokemonName);
-             alreadySearched.push(response.id);
+             alreadySearched.push(""+response.id+"");
 
 
             try {
@@ -158,7 +156,6 @@ $("#create-file").on("click", function(){
         var pokemonSpot = $("<div>");
         pokemonSpot.attr("class","panel-body");
         
-        
         //creates header of panel for pokemon name
         var panelHeader = $("<div>");
         panelHeader.attr("class","panel-heading");
@@ -187,7 +184,6 @@ $("#create-file").on("click", function(){
         hoverSaveBox.attr("class","hoverSave");
         var hoverSaveText = $("<div>");
         hoverSaveText.attr("class","text");
-
 
         var hoverSaveGlyph = $("<span>");
         hoverSaveGlyph.attr("class","glyphicon glyphicon-floppy-save");
@@ -259,8 +255,7 @@ $("#create-file").on("click", function(){
             colorBox.css("background-color",rbgCode);
             leftColRow.append(colorBox);
           }
-
-        
+      
         });
 
          // --------------------------------------------------------

@@ -22,8 +22,8 @@ $(document).ready(function() {
 
   // gives the user initial styles to look at *** update for loading popular
   for (var j = 0 ; j < initLoadImages.length; j++) {
-    disableBool = true;
     pokemonToFind = initLoadImages[j];
+    $("#search-param").attr('placeholder','Please Wait');
     imageSearch(pokemonToFind);
   }
 
@@ -38,24 +38,50 @@ $(document).ready(function() {
     generatePaletteDOM(pokemonPalette[curPokemonPaletter]);
     generateStyleDOM(cssVariableObject);
     $("#lowerBody").slideDown("slow");
-
-
   });
 
 // --------------------------------------------------------
 // SEARCH HANDLER
 // --------------------------------------------------------
+  //primary search button to look for pokemon name/number
+  //creating new array for all previous searched pokemon names and numbers
+  var alreadySearched = [];
 
-  //primary search button to look for pokemone name/number
+  //on clicking the button
   $("#search-button").on("click",function() {
-    if (!disableBool) {
-      disableBool = true;
-      var pokemonToFind = $("#search-param").val().trim().toLowerCase();
-      if (pokemonToFind != "") {
-        imageSearch(pokemonToFind);
-      }
-    }
+      searchHandler();
   });
+
+  // on hitting enter
+  $(document).keypress(function(e) {
+    if(e.which == 13) {
+        searchHandler();
+    }
+});
+
+    function searchHandler () {
+       if (!disableBool) {
+          disableBool = true;
+
+          var pokemonToFind = $("#search-param").val().trim().toLowerCase();
+          var indexPokemon = alreadySearched.indexOf(pokemonToFind);
+
+          console.log(indexPokemon, alreadySearched );
+
+          if (pokemonToFind != "" && indexPokemon == -1) {
+            imageSearch(pokemonToFind);
+            $("#search-param").val("");
+            $("#search-param").attr('disabled','""');
+            $("#search-param").attr('placeholder','Please Wait');
+          }
+            //updates placeholder if pokemon has previously been searched
+          else if (indexPokemon != -1) {
+            $("#search-param").val("");
+            $("#search-param").attr('placeholder','Please choose a new pokemon');
+            disableBool = false;
+          }
+        }
+    }
 
 // --------------------------------------------------------
 // HOVER EFFECTS WITH JQUERY
@@ -66,7 +92,6 @@ $(document).ready(function() {
     $(".pokemonInfo",this).css("opacity", "0.15");
     $('.hoverLook', this).css("opacity", "1");
     $('.hoverSave', this).css("opacity", "1");
-
 
 });
 
@@ -93,6 +118,12 @@ $("#create-file").on("click", function(){
               //returns name and picture from API
              pokemonName = response.name;
              pokemonPicture = response.sprites.front_default;
+             
+             //creating searched images and prevent duplicates (as it errors)
+             alreadySearched.push(pokemonName);
+             alreadySearched.push(""+response.id+"");
+
+
             try {
               createPokemon(pokemonName,pokemonPicture);
             }
@@ -112,6 +143,7 @@ $("#create-file").on("click", function(){
         // this array will hold all the colors in complete rgb format
         var colorPal = [];
         
+        
         // --------------------------------------------------------
         // CREATION OF ALL DIVS CLASSES
         // --------------------------------------------------------
@@ -123,7 +155,6 @@ $("#create-file").on("click", function(){
         //creates inner div of the panel
         var pokemonSpot = $("<div>");
         pokemonSpot.attr("class","panel-body");
-        
         
         //creates header of panel for pokemon name
         var panelHeader = $("<div>");
@@ -153,7 +184,6 @@ $("#create-file").on("click", function(){
         hoverSaveBox.attr("class","hoverSave");
         var hoverSaveText = $("<div>");
         hoverSaveText.attr("class","text");
-
 
         var hoverSaveGlyph = $("<span>");
         hoverSaveGlyph.attr("class","glyphicon glyphicon-floppy-save");
@@ -225,8 +255,7 @@ $("#create-file").on("click", function(){
             colorBox.css("background-color",rbgCode);
             leftColRow.append(colorBox);
           }
-
-        
+      
         });
 
          // --------------------------------------------------------
@@ -249,6 +278,8 @@ $("#create-file").on("click", function(){
         pokemonHolder.append(pokemonSpot);
         $("#imagePlace").append(pokemonHolder);
         disableBool = false;
+        $("#search-param").removeAttr('disabled');
+        $("#search-param").attr('placeholder',"Pokemon name or number");
 
     }
 
