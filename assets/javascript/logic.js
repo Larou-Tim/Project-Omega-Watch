@@ -22,8 +22,8 @@ $(document).ready(function() {
 
   // gives the user initial styles to look at *** update for loading popular
   for (var j = 0 ; j < initLoadImages.length; j++) {
-    disableBool = true;
     pokemonToFind = initLoadImages[j];
+    $("#search-param").attr('placeholder','Please Wait');
     imageSearch(pokemonToFind);
   }
 
@@ -64,13 +64,23 @@ $(document).ready(function() {
     function searchHandler () {
        if (!disableBool) {
           disableBool = true;
+          
+
           var pokemonToFind = $("#search-param").val().trim().toLowerCase();
           var indexPokemon = alreadySearched.indexOf(pokemonToFind);
 
-          console.log(indexPokemon, alreadySearched);
+
 
           if (pokemonToFind != "" && indexPokemon == -1) {
             imageSearch(pokemonToFind);
+            $("#search-param").val("");
+            $("#search-param").attr('disabled','""');
+            $("#search-param").attr('placeholder','Please Wait');
+          }
+
+          else if (indexPokemon != -1) {
+            $("#search-param").val("");
+            $("#search-param").attr('placeholder','Please choose a new pokemon');
           }
         }
     }
@@ -273,6 +283,8 @@ $("#create-file").on("click", function(){
         pokemonHolder.append(pokemonSpot);
         $("#imagePlace").append(pokemonHolder);
         disableBool = false;
+        $("#search-param").removeAttr('disabled');
+        $("#search-param").attr('placeholder',"Pokemon name or number");
 
     }
 
