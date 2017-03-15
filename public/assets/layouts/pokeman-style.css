@@ -1,0 +1,23 @@
+html {
+	--paragraph-text-color: #1D3E8C;
+	--header-text-color: #1D3E8C;
+	--body-bg-color: #d43C58;
+	--div-bg-color: #D9F9A5;
+	--border-color: #FFEBD6;
+	--div-box-shadow-color: #A3C4BC;
+}/* These are initial declarations of the CSS variables. Use by replacing any color value in this document with var([property variable name]) There are no quotes. See examples. */
+/*body {
+	background-color: var(--body-bg-color);
+}
+p {
+	color: var(--paragraph-text-color);
+}
+div {
+	color: var(--div-text-color);
+	box-shadow: 5px 5px 2px var(--div-box-shadow-color);
+	background-color: var(--div-bg-color);
+	border: 3px dotted var(--border-color);
+}
+h1,h2,h3,h4,h5,h6 {
+	color: var(--header-text-color);
+}*/
