@@ -58,6 +58,8 @@ $("body").on("mouseleave", ".pokemonBox", function() {
     $(".panel-body",this).css("opacity", "1");
 });
 
+$("#create-file").on("click", getSelectedStyleVariables);
+
   //ajax serach request that reaches to pokeAPI 
   function imageSearch(val) {
       $.ajax({
