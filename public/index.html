@@ -1,111 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Pokemon Theme Tool</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+  <head>
+    <meta charset="UTF-8">
+    <title>Pokemon Theme Tool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css" rel="stylesheet" integrity="sha384-S7YMK1xjUjSpEnF4P8hPUcgjXYLZKK3fQW1j5ObLSl787II9p8RO9XUGehRmKsxd" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	 <script src="https://code.jquery.com/jquery-3.1.1.min.js">    </script>
-   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js">    </script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
     crossorigin="anonymous"></script>
-   
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
     <script type="text/javascript"   src="./assets/javascript/logic.js"></script>
-     <script  type="text/javascript" src="./assets/javascript/output.js"></script>
+    <script  type="text/javascript" src="./assets/javascript/output.js"></script>
     <script src="assets/javascript/color-thief.min.js"></script>
     
-     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- Fire js/css used for user authentication -->
     <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
     <script src="assets/javascript/fire.js"></script>
     <link rel="stylesheet" href="assets/css/fireStyle.css">
     <!-- ++++++++++++++++++++++++ -->
     
-
-
-</head>
-
-<body>
-<!-- ++++++++++++++++++++++++ -->
-<!-- start NAV-BAR -->
- <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Pokemon Theme Tool</a>
-    </div>
-    <!-- USER LOGIN on Nav Bar @kck-->
-    <div class="userAuth">
-      <input id="email" type="text" placeholder="Email"/>
-      <input id="password" type="password" placeholder="Password"/>
-      <button id="register">Register</button>
-      <button id="login">Login</button>
-      <button id="logout">Sign Out</button>
-      <output id="message"></output> <!-- If error, display here -->
-    </div>
-    <!-- +++++ -->
-  </div>
-  </nav>
-<div class="container">
-<!-- ++++++++++++++++++++++++ -->
-
-  <div class="row">
-      <div class="col-lg-6">
-        <div class="input-group">
-          <span class="input-group-btn">
-            <button class="btn btn-warning" type="button" id="search-button" >Pokemon Search</button>
-          </span>
-          <input type="text" class="form-control" id="search-param" placeholder="Pokemon name or number">
-        </div><!-- /input-group -->
-      </div><!-- /.col-lg-6 -->
-    </div><!-- /.row -->
-    <div id="imagePlace"></div>
-  
-  </div>
-
-<br> 
-<div class="container" id="lowerBody">
-
-      <!-- Headers and Style -->
-      <div class="panel panel-default">
-        <div class="panel-body example-markup">
-          <h1>Check it.</h1>
-          <p> I wanna be the very best, <br>
-              Like no one ever was. <br>
-              To catch them all is my real test, <br>
-              To train them is my cause, </p>
-          <p>
-              I will travel across the land, <br>
-              Searching far and wide. <br>
-              Teach Pokemon to understand <br>
-              The power that's inside! </p>
-
-             <p> Pokemon, (gotta catch them all) its you and me <br>
-              I know its my destiny <br>
-              Pokemon, oh, you're my best friend <br>
-              In a world we must defend </p>
-          <p>
-              Pokemon, (gotta catch them all) a heart so true <br>
-              Our courage will pull us through <br>
-              You teach me and I'll teach you <br>
-              (Po-ke-mon) Gotta catch 'em all </p>
-
-              <p> Yeah! </p>
-
+  </head>
+  <body>
+    <!-- ++++++++++++++++++++++++ -->
+    <!-- start NAV-BAR -->
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Pokemon Theme Tool</a>
         </div>
+        <!-- USER LOGIN on Nav Bar @kck-->
+        <div class="userAuth">
+          <input id="email" type="text" placeholder="Email"/>
+          <input id="password" type="password" placeholder="Password"/>
+          <button id="register">Register</button>
+          <button id="login">Login</button>
+          <button id="logout">Sign Out</button>
+          <output id="message"></output> <!-- If error, display here -->
+        </div>
+        <!-- +++++ -->
       </div>
-      <!-- Draggable colors -->
-      <div class="panel panel-default">
-        <div class="panel-body palette-box"></div>
-      </div>
-      <!-- Drop container -->
-      <div class="panel panel-default">
-        <div class="panel-body style-container"></div>
-      </div>
-</div>
-
-</body>
-</html>
+    </nav>
+    <div class="container">
+      <!-- ++++++++++++++++++++++++ -->
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <div class="input-group-btn">
+              <button class="btn btn-warning" type="button" id="search-button" >Pokemon Search</button>
+            </div>
+            <input type="text" class="form-control" id="search-param" placeholder="Pokemon name or number">
+            </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+            <div id="imagePlace"></div>
+            
+          </div>
+          <br>
+          <div class="container" id="lowerBody">
+            <!-- Headers and Style -->
+            <!-- Draggable colors -->
+            <div class="row row-eq-height">
+              <div class="col-sm-3 panel panel-default">
+                <div class="panel-body palette-box"></div>
+              </div>
+              <!-- Drop container -->
+              <div class="col-sm-6 panel panel-default">
+                <div class="panel-body style-container"></div>
+              </div>
+              <div class="col-sm-3 panel panel-default">
+                <div class="panel-body">
+                  <!-- Generate/ Update File and Download Button -->
+                  <button class="btn btn-success btn-block" id="create-file">Generate Your CSS</button>
+                  <a href="" download="" id="download-link"><button class="btn btn-link btn-block">Download your CSS File</button></a>
+                </div>
+              </div>
+            </div>
+            <!-- Row is content of the example -->
+            <div class="row">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="container"><ul class="nav nav-tabs nav-justified">
+                    <li class="active"><a data-toggle="tab" href="#example1">Example 1</a></li>
+                    <li><a data-toggle="tab" href="#example2">Example 2</a></li>
+                    <li><a data-toggle="tab" href="#example3">Example 3</a></li>
+                  </ul>
+                  <div class="tab-content example-markup">
+                    <div id="example1" class="tab-pane fade in active">
+                      <h1>Example 1</h1>
+                      <p> I wanna be the very best, <br>
+                        Like no one ever was. <br>
+                        To catch them all is my real test, <br>
+                      To train them is my cause, </p>
+                      <p>
+                        I will travel across the land, <br>
+                        Searching far and wide. <br>
+                        Teach Pokemon to understand <br>
+                      The power that's inside! </p>
+                    </div>
+                    <div id="example2" class="tab-pane fade">
+                      <p>Stuff</p>
+                    </div>
+                    <div id="example3" class="tab-pane fade">
+                      <h1>Check it.</h1>
+                      <p> I wanna be the very best, <br>
+                        Like no one ever was. <br>
+                        To catch them all is my real test, <br>
+                      To train them is my cause, </p>
+                      <p>
+                        I will travel across the land, <br>
+                        Searching far and wide. <br>
+                        Teach Pokemon to understand <br>
+                      The power that's inside! </p>
+                    </div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div> <!-- Lower Body -->
+          </body>
+        </html>

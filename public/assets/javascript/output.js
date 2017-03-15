@@ -45,7 +45,8 @@
             // Adding classes and modifying output container DOM.
             outputContainer.append(outputColor);
             outputContainer.addClass("inline-block swatch-container");
-            outputContainer.append($("<p>").text(colorsArray[i]).addClass("text-center"));
+            // Text for color swatches
+            // outputContainer.append($("<p>").text(colorsArray[i]).addClass("text-center"));
             $(".palette-box").append(outputContainer);
         }   
     }
@@ -149,6 +150,6 @@
     }
 
     // $("#download-link").on("click", saveAsStyleSheet);
-    $("#submit-create-file").on("click", getSelectedStyleVariables);
+    // $("#create-file").on("click", getSelectedStyleVariables);
      
 // });
