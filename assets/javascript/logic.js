@@ -46,7 +46,7 @@ $(document).ready(function() {
 
  $("body").on("mouseenter", ".pokemonBox", function() {
     // starts hover effect
-    $(".panel-body",this).css("opacity", "0.15");
+    $(".pokemonInfo",this).css("opacity", "0.15");
     $('.hoverLook', this).css("opacity", "1");
     $('.hoverSave', this).css("opacity", "1");
 
@@ -55,8 +55,7 @@ $(document).ready(function() {
 
 $("body").on("mouseleave", ".pokemonBox", function() {
     // removes hover
-    $('.middle', this).css("opacity", "0");
-    $(".panel-body",this).css("opacity", "1");
+    $(".pokemonInfo",this).css("opacity", "1");
     $('.hoverLook', this).css("opacity", "0");
     $('.hoverSave', this).css("opacity", "0");
 });
