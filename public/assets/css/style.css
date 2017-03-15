@@ -55,38 +55,17 @@ body {
   z-index:2;
 }
 
-<<<<<<< HEAD
-.hoverLook {
-=======
 .hoverSave {
->>>>>>> df019a766e15cfaadfa1cd6f93ee9913545a6031
   transition: .5s ease;
   opacity: 0;
   position: absolute;
   top: 50%;
-<<<<<<< HEAD
-  left: 25%;
-=======
   left: 75%;
->>>>>>> df019a766e15cfaadfa1cd6f93ee9913545a6031
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%)
   z-index:2;
 }
 
-<<<<<<< HEAD
-.hoverSave {
-  transition: .5s ease;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 75%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%)
-}
-
-=======
->>>>>>> df019a766e15cfaadfa1cd6f93ee9913545a6031
 
 .text {
   background-color: #00bc8c;

@@ -89,36 +89,14 @@ $(document).ready(function() {
 
  $("body").on("mouseenter", ".pokemonBox", function() {
     // starts hover effect
-<<<<<<< HEAD
-    $(".panel-body",this).css("opacity", "0.15");
-    $('.hoverLook', this).css("opacity", "1");
-    $('.hoverSave', this).css("opacity", "1");
-
-=======
     $(".pokemonInfo",this).css("opacity", "0.15");
     $('.hoverLook', this).css("opacity", "1");
     $('.hoverSave', this).css("opacity", "1");
->>>>>>> df019a766e15cfaadfa1cd6f93ee9913545a6031
 
 });
 
 $("body").on("mouseleave", ".pokemonBox", function() {
     // removes hover
-<<<<<<< HEAD
-    $('.middle', this).css("opacity", "0");
-    $(".panel-body",this).css("opacity", "1");
-    $('.hoverLook', this).css("opacity", "0");
-    $('.hoverSave', this).css("opacity", "0");
-});
-
-$("#create-file").on("click", function(){
-  getSelectedStyleVariables();
-  $("#download-link").slideDown("slow");
-});
-
-
-  //ajax serach request that reaches to pokeAPI 
-=======
     $(".pokemonInfo",this).css("opacity", "1");
     $('.hoverLook', this).css("opacity", "0");
     $('.hoverSave', this).css("opacity", "0");
@@ -132,7 +110,6 @@ $("#create-file").on("click", function(){
 // --------------------------------------------------------
 // AJAX FOR POKEMON API 
 // --------------------------------------------------------
->>>>>>> df019a766e15cfaadfa1cd6f93ee9913545a6031
   function imageSearch(val) {
       $.ajax({
             url: (queryURL + val),
@@ -198,10 +175,6 @@ $("#create-file").on("click", function(){
         hoverLookText.attr("class","text");
         var hoverLookGlyph = $("<span>");
         
-<<<<<<< HEAD
-
-=======
->>>>>>> df019a766e15cfaadfa1cd6f93ee9913545a6031
         hoverLookGlyph.attr("class","glyphicon glyphicon-search");
         hoverLookGlyph.attr("aria-hidden","true");
         hoverLookText.append(hoverLookGlyph);
@@ -212,10 +185,6 @@ $("#create-file").on("click", function(){
         var hoverSaveText = $("<div>");
         hoverSaveText.attr("class","text");
 
-<<<<<<< HEAD
-
-=======
->>>>>>> df019a766e15cfaadfa1cd6f93ee9913545a6031
         var hoverSaveGlyph = $("<span>");
         hoverSaveGlyph.attr("class","glyphicon glyphicon-floppy-save");
         hoverSaveGlyph.attr("aria-hidden","true");
@@ -302,14 +271,9 @@ $("#create-file").on("click", function(){
         pokemonSpot.append(rowPlace);
 
         pokemonHolder.attr("pokemonName",name);
-<<<<<<< HEAD
-        pokemonHolder.append(hoverLookBox);
-        pokemonHolder.append(hoverSaveBox);
-=======
         pokemonSpot.append(hoverLookBox);
         pokemonSpot.append(hoverSaveBox);
 
->>>>>>> df019a766e15cfaadfa1cd6f93ee9913545a6031
         pokemonHolder.append(panelHeader);
         pokemonHolder.append(pokemonSpot);
         $("#imagePlace").append(pokemonHolder);
