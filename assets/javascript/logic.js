@@ -46,8 +46,9 @@ $(document).ready(function() {
 
  $("body").on("mouseenter", ".pokemonBox", function() {
     // starts hover effect
-    $(".panel-body",this).css("opacity", "0.3");
-    $('.middle', this).css("opacity", "1");
+    $(".panel-body",this).css("opacity", "0.15");
+    $('.hoverLook', this).css("opacity", "1");
+    $('.hoverSave', this).css("opacity", "1");
 
 
 });
@@ -56,6 +57,8 @@ $("body").on("mouseleave", ".pokemonBox", function() {
     // removes hover
     $('.middle', this).css("opacity", "0");
     $(".panel-body",this).css("opacity", "1");
+    $('.hoverLook', this).css("opacity", "0");
+    $('.hoverSave', this).css("opacity", "0");
 });
 
 $("#create-file").on("click", getSelectedStyleVariables);
@@ -102,15 +105,30 @@ $("#create-file").on("click", getSelectedStyleVariables);
         var rightCol = $("<div>");
         var midCol = $("<div>");
         //creates the hidden context menu for when user hovers over
-        var hoverBox = $("<div>");
-        hoverBox.attr("class","middle");
-        var hoverText = $("<div>");
-        hoverText.attr("class","text");
-        var hoverGlyph = $("<span>");
-        hoverGlyph.attr("class","glyphicon glyphicon-search");
-        hoverGlyph.attr("aria-hidden","true");
-        hoverText.append(hoverGlyph);
-        hoverBox.append(hoverText);
+        var hoverLookBox = $("<div>");
+        hoverLookBox.attr("class","hoverLook");
+        var hoverLookText = $("<div>");
+        hoverLookText.attr("class","text");
+        var hoverLookGlyph = $("<span>");
+        
+
+        hoverLookGlyph.attr("class","glyphicon glyphicon-search");
+        hoverLookGlyph.attr("aria-hidden","true");
+        hoverLookText.append(hoverLookGlyph);
+        hoverLookBox.append(hoverLookText);
+
+        var hoverSaveBox = $("<div>");
+        hoverSaveBox.attr("class","hoverSave");
+        var hoverSaveText = $("<div>");
+        hoverSaveText.attr("class","text");
+
+
+        var hoverSaveGlyph = $("<span>");
+        hoverSaveGlyph.attr("class","glyphicon glyphicon-floppy-save");
+        hoverSaveGlyph.attr("aria-hidden","true");
+        hoverSaveText.append(hoverSaveGlyph);
+        hoverSaveBox.append(hoverSaveText);
+
         // creates the columns for organization
         leftCol.attr("class", "col-sm-4");
         rightCol.attr("class","col-sm-4");
@@ -173,13 +191,15 @@ $("#create-file").on("click", getSelectedStyleVariables);
         });
         //appends all of the elements together to display 
         pokemonPalette[name] = colorPal;
+        // console.log(pokemonPalette);
         rightCol.append(pokemonImage);
         leftCol.append(leftColRow);
         rowPlace.append(leftCol);
         rowPlace.append(rightCol);
         pokemonSpot.append(rowPlace);
         pokemonHolder.attr("pokemonName",name);
-        pokemonHolder.append(hoverBox);
+        pokemonHolder.append(hoverLookBox);
+        pokemonHolder.append(hoverSaveBox);
         pokemonHolder.append(panelHeader);
         pokemonHolder.append(pokemonSpot);
         $("#imagePlace").append(pokemonHolder);
