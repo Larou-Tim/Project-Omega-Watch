@@ -16,12 +16,21 @@ $(document).ready(function() {
         "Box Shadow Color": "--div-box-shadow-color"
     }
 
-  // gives the user initial styles to look at
+// --------------------------------------------------------
+// INITIAL QUERY
+// --------------------------------------------------------
+
+  // gives the user initial styles to look at *** update for loading popular
   for (var j = 0 ; j < initLoadImages.length; j++) {
     disableBool = true;
     pokemonToFind = initLoadImages[j];
     imageSearch(pokemonToFind);
   }
+
+
+// --------------------------------------------------------
+// PANEL SLIDE DOWN AND STYLE GENERATION
+// --------------------------------------------------------
 
   // based on a pokemon palete, user can select one to try altering a page
   $("body").on("click",".pokemonBox", function() {
@@ -32,6 +41,10 @@ $(document).ready(function() {
 
 
   });
+
+// --------------------------------------------------------
+// SEARCH HANDLER
+// --------------------------------------------------------
 
   //primary search button to look for pokemone name/number
   $("#search-button").on("click",function() {
@@ -44,21 +57,34 @@ $(document).ready(function() {
     }
   });
 
+// --------------------------------------------------------
+// HOVER EFFECTS WITH JQUERY
+// --------------------------------------------------------
+
  $("body").on("mouseenter", ".pokemonBox", function() {
     // starts hover effect
-    $(".panel-body",this).css("opacity", "0.3");
-    $('.middle', this).css("opacity", "1");
+    $(".pokemonInfo",this).css("opacity", "0.15");
+    $('.hoverLook', this).css("opacity", "1");
+    $('.hoverSave', this).css("opacity", "1");
 
 
 });
 
 $("body").on("mouseleave", ".pokemonBox", function() {
     // removes hover
-    $('.middle', this).css("opacity", "0");
-    $(".panel-body",this).css("opacity", "1");
+    $(".pokemonInfo",this).css("opacity", "1");
+    $('.hoverLook', this).css("opacity", "0");
+    $('.hoverSave', this).css("opacity", "0");
 });
 
-  //ajax serach request that reaches to pokeAPI 
+$("#create-file").on("click", function(){
+  getSelectedStyleVariables();
+  $("#download-link").slideDown("slow");
+});
+
+// --------------------------------------------------------
+// AJAX FOR POKEMON API 
+// --------------------------------------------------------
   function imageSearch(val) {
       $.ajax({
             url: (queryURL + val),
@@ -77,38 +103,64 @@ $("body").on("mouseleave", ".pokemonBox", function() {
     }
 
 
-    //primary function to create panal based on pokemon searched for
+// --------------------------------------------------------
+// COLOR PALETTE PANAL CREATION
+// --------------------------------------------------------
+
   function createPokemon(name,picture) {
     try {
         // this array will hold all the colors in complete rgb format
         var colorPal = [];
-        //creates outer div of hte panel
+        
+        // --------------------------------------------------------
+        // CREATION OF ALL DIVS CLASSES
+        // --------------------------------------------------------
+          //might be able to clean up this code and use less
+        //creates outer div of the panel
+
         var pokemonHolder = $("<div>");
         pokemonHolder.attr("class","panel panel-primary pokemonBox");
         //creates inner div of the panel
         var pokemonSpot = $("<div>");
         pokemonSpot.attr("class","panel-body");
+        
+        
         //creates header of panel for pokemon name
         var panelHeader = $("<div>");
         panelHeader.attr("class","panel-heading");
         panelHeader.text(name);
 
         var rowPlace = $("<div>");
-        rowPlace.attr("class","row");
+        rowPlace.attr("class","row pokemonInfo");
+        // pokemonBlockBody.attr("class","pokemonInfo")
 
         var leftCol = $("<div>");
         var rightCol = $("<div>");
         var midCol = $("<div>");
         //creates the hidden context menu for when user hovers over
-        var hoverBox = $("<div>");
-        hoverBox.attr("class","middle");
-        var hoverText = $("<div>");
-        hoverText.attr("class","text");
-        var hoverGlyph = $("<span>");
-        hoverGlyph.attr("class","glyphicon glyphicon-search");
-        hoverGlyph.attr("aria-hidden","true");
-        hoverText.append(hoverGlyph);
-        hoverBox.append(hoverText);
+        var hoverLookBox = $("<div>");
+        hoverLookBox.attr("class","hoverLook");
+        var hoverLookText = $("<div>");
+        hoverLookText.attr("class","text");
+        var hoverLookGlyph = $("<span>");
+        
+        hoverLookGlyph.attr("class","glyphicon glyphicon-search");
+        hoverLookGlyph.attr("aria-hidden","true");
+        hoverLookText.append(hoverLookGlyph);
+        hoverLookBox.append(hoverLookText);
+
+        var hoverSaveBox = $("<div>");
+        hoverSaveBox.attr("class","hoverSave");
+        var hoverSaveText = $("<div>");
+        hoverSaveText.attr("class","text");
+
+
+        var hoverSaveGlyph = $("<span>");
+        hoverSaveGlyph.attr("class","glyphicon glyphicon-floppy-save");
+        hoverSaveGlyph.attr("aria-hidden","true");
+        hoverSaveText.append(hoverSaveGlyph);
+        hoverSaveBox.append(hoverSaveText);
+
         // creates the columns for organization
         leftCol.attr("class", "col-sm-4");
         rightCol.attr("class","col-sm-4");
@@ -119,16 +171,23 @@ $("body").on("mouseleave", ".pokemonBox", function() {
         //creates img that is used for display
         var pokemonImage = $("<img>");
         pokemonImage.attr("src", picture);
-        pokemonImage.attr('width',"150px");
-        pokemonImage.attr('height','150px');
+        // pokemonImage.attr('width',"150px");
+        // pokemonImage.attr('height','150px');
+        pokemonImage.attr("class","displayImage");
         pokemonImage.attr('crossOrigin','Anonymous');
         pokemonImage.crossOrigin = "Anonymous";
+        
+
+        // --------------------------------------------------------
+        // COLOR THIEF
+        // --------------------------------------------------------
         //creates img that is used in color theif for palette creation (200px seems sweet spot)
         img2 = document.createElement('img');
         img2.setAttribute('src', picture);
         img2.setAttribute('width', '200px');
         img2.setAttribute('height', '200px');
         img2.crossOrigin = "Anonymous";
+
 
         // jquery load causes more issues on load functionality
         //load function waits for img to compelete before running color thief
@@ -169,15 +228,23 @@ $("body").on("mouseleave", ".pokemonBox", function() {
 
         
         });
+
+         // --------------------------------------------------------
+        // APPEND TO DOCUMENT
+        // --------------------------------------------------------
         //appends all of the elements together to display 
         pokemonPalette[name] = colorPal;
+        // console.log(pokemonPalette);
         rightCol.append(pokemonImage);
         leftCol.append(leftColRow);
         rowPlace.append(leftCol);
         rowPlace.append(rightCol);
         pokemonSpot.append(rowPlace);
+
         pokemonHolder.attr("pokemonName",name);
-        pokemonHolder.append(hoverBox);
+        pokemonSpot.append(hoverLookBox);
+        pokemonSpot.append(hoverSaveBox);
+
         pokemonHolder.append(panelHeader);
         pokemonHolder.append(pokemonSpot);
         $("#imagePlace").append(pokemonHolder);

@@ -20,13 +20,13 @@ $(document).ready(function(){
   firebase.initializeApp(config);
 
   // --------------------------------------------------------
-  // CREATE ACCOUNT
+  // ACCOUNT SIGN IN
   // --------------------------------------------------------
   function loginFire(){ 
     var email = $("#email").val();
     var password = $("#password").val();
     $("#message").html("Logged in as "+email);
-    unhide();
+    hide();
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
@@ -37,7 +37,7 @@ $(document).ready(function(){
   }
 
   // --------------------------------------------------------
-  // ACCOUNT SIGN IN
+  // CREATE ACCOUNT
   // --------------------------------------------------------
   function registerFire(){
     if(firebase.auth().currentUser){
@@ -45,8 +45,8 @@ $(document).ready(function(){
     } else {
       var email = $("#email").val();
       var password = $("#password").val();
-	  $("#message").html("You are registered!");
-	  unhide();
+	    $("#message").html("You are registered!");
+	    unhide();
     }
     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
       // Handle Errors here.
@@ -63,7 +63,7 @@ $(document).ready(function(){
   function logoutFire(){  
     firebase.auth().signOut().then(function() {
       $("#message").html("You are signed out!");
-      unhide();
+      signedOut();
     }, function(error) {
       $("#message").html(error);
       unhide();
@@ -96,5 +96,56 @@ $(document).ready(function(){
   // --------------------------------------------------------
   function unhide(){
   	$("#message").css("visibility", "visible");
+  }//makes message form visible to display error message
+  function hide(){//hide login buttons
+    $("#register").css("visibility", "hidden");
+    $("#login").css("visibility", "hidden");
+    $("#email").css("visibility", "hidden");
+    $("#password").css("visibility", "hidden");
+    $("#message").css("visibility", "visible");
   }
+  function signedOut(){
+    unhide();
+    $("#register").css("visibility", "visible");
+    $("#login").css("visibility", "visible");
+    $("#email").css("visibility", "visible");
+    $("#password").css("visibility", "visible");
+  }
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // --------------------------------------------------------
+  // DATABASE: Trending, Popularity, Profile
+  // --------------------------------------------------------
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  //INITIALIZE
+  var database = firebase.database();
+  //recently most looked at
+  var trending = {};
+  var trendName = "";
+  var trendAmount = 0;
+  //most saved to profile
+  var popularity = [];
+
+  // --------------------------------------------------------
+  // hoverLook search button clicked
+  // --------------------------------------------------------
+  $("body").on("click", ".hoverLook", function(){
+    //get the name of pokemon from parent box
+    trendName = $(this).parent().attr("pokemonName");
+    //get the amount already looked @ from database if exists
+    //add 1 to trend amount
+    //get the current top 4 looked at & compare trend amount
+    //if it is greater than the 4th spot, then replace #4
+    //if it already exists check the spot above it to see if swap
+    //then update firebase database
+    database.ref().push({
+    });
+  });
+
+  // --------------------------------------------------------
+  // hoverSave search button clicked
+  // --------------------------------------------------------
+  //same concept as hoverLook but permanent & on save
+
+  //THEN add functions for storing the colors to the user id
+
 });

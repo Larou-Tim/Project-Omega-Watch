@@ -45,17 +45,35 @@ $(document).ready(function() {
 // --------------------------------------------------------
 // SEARCH HANDLER
 // --------------------------------------------------------
+  //primary search button to look for pokemon name/number
+  //creating new array for all previous searched pokemon names and numbers
+  var alreadySearched = [];
 
-  //primary search button to look for pokemone name/number
+  //on clicking the button
   $("#search-button").on("click",function() {
-    if (!disableBool) {
-      disableBool = true;
-      var pokemonToFind = $("#search-param").val().trim().toLowerCase();
-      if (pokemonToFind != "") {
-        imageSearch(pokemonToFind);
-      }
-    }
+      searchHandler();
   });
+
+  // on hitting enter
+  $(document).keypress(function(e) {
+    if(e.which == 13) {
+        searchHandler();
+    }
+});
+
+    function searchHandler () {
+       if (!disableBool) {
+          disableBool = true;
+          var pokemonToFind = $("#search-param").val().trim().toLowerCase();
+          var indexPokemon = alreadySearched.indexOf(pokemonToFind);
+
+          console.log(indexPokemon, alreadySearched);
+
+          if (pokemonToFind != "" && indexPokemon == -1) {
+            imageSearch(pokemonToFind);
+          }
+        }
+    }
 
 // --------------------------------------------------------
 // HOVER EFFECTS WITH JQUERY
@@ -66,7 +84,6 @@ $(document).ready(function() {
     $(".pokemonInfo",this).css("opacity", "0.15");
     $('.hoverLook', this).css("opacity", "1");
     $('.hoverSave', this).css("opacity", "1");
-
 
 });
 
@@ -93,6 +110,12 @@ $("#create-file").on("click", function(){
               //returns name and picture from API
              pokemonName = response.name;
              pokemonPicture = response.sprites.front_default;
+             
+             //creating searched images and prevent duplicates (as it errors)
+             alreadySearched.push(pokemonName);
+             alreadySearched.push(response.id);
+
+
             try {
               createPokemon(pokemonName,pokemonPicture);
             }
@@ -111,6 +134,7 @@ $("#create-file").on("click", function(){
     try {
         // this array will hold all the colors in complete rgb format
         var colorPal = [];
+        
         
         // --------------------------------------------------------
         // CREATION OF ALL DIVS CLASSES
