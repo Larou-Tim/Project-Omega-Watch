@@ -39,6 +39,10 @@ body {
 	clear: both;
 	display: none;
 }
+ 
+.pokemonInfo {
+	z-index: -1;
+}
 
 .hoverLook {
   transition: .5s ease;
@@ -48,6 +52,7 @@ body {
   left: 25%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%)
+  z-index:2;
 }
 
 .hoverSave {
@@ -58,6 +63,7 @@ body {
   left: 75%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%)
+  z-index:2;
 }
 
 

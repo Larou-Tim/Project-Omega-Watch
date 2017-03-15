@@ -97,13 +97,16 @@ $("#create-file").on("click", function(){
         //creates inner div of the panel
         var pokemonSpot = $("<div>");
         pokemonSpot.attr("class","panel-body");
+        
+        
         //creates header of panel for pokemon name
         var panelHeader = $("<div>");
         panelHeader.attr("class","panel-heading");
         panelHeader.text(name);
 
         var rowPlace = $("<div>");
-        rowPlace.attr("class","row");
+        rowPlace.attr("class","row pokemonInfo");
+        // pokemonBlockBody.attr("class","pokemonInfo")
 
         var leftCol = $("<div>");
         var rightCol = $("<div>");
@@ -143,8 +146,9 @@ $("#create-file").on("click", function(){
         //creates img that is used for display
         var pokemonImage = $("<img>");
         pokemonImage.attr("src", picture);
-        pokemonImage.attr('width',"150px");
-        pokemonImage.attr('height','150px');
+        // pokemonImage.attr('width',"150px");
+        // pokemonImage.attr('height','150px');
+        pokemonImage.attr("class","displayImage");
         pokemonImage.attr('crossOrigin','Anonymous');
         pokemonImage.crossOrigin = "Anonymous";
         //creates img that is used in color theif for palette creation (200px seems sweet spot)
@@ -201,9 +205,11 @@ $("#create-file").on("click", function(){
         rowPlace.append(leftCol);
         rowPlace.append(rightCol);
         pokemonSpot.append(rowPlace);
+
         pokemonHolder.attr("pokemonName",name);
-        pokemonHolder.append(hoverLookBox);
-        pokemonHolder.append(hoverSaveBox);
+        pokemonSpot.append(hoverLookBox);
+        pokemonSpot.append(hoverSaveBox);
+
         pokemonHolder.append(panelHeader);
         pokemonHolder.append(pokemonSpot);
         $("#imagePlace").append(pokemonHolder);
