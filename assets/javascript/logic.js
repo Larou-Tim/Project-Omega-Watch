@@ -7,6 +7,15 @@ $(document).ready(function() {
   var initLoadImages = [1,9,150,'magikarp'];
   var pokemonPalette = {};
 
+   var cssVariableObject = {   
+        "Paragraph Text": "--paragraph-text-color",
+        "Header Text": "--header-text-color",
+        "Body BG Color": "--body-bg-color",
+        "Div BG Color": "--div-bg-color",
+        "Border Color": "--border-color",
+        "Box Shadow Color": "--div-box-shadow-color"
+    }
+
   // gives the user initial styles to look at
   for (var j = 0 ; j < initLoadImages.length; j++) {
     disableBool = true;
@@ -18,6 +27,7 @@ $(document).ready(function() {
   $("body").on("click",".pokemonBox", function() {
     var curPokemonPaletter = $(this).attr("pokemonName");
     generatePaletteDOM(pokemonPalette[curPokemonPaletter]);
+    generateStyleDOM(cssVariableObject);
     $("#lowerBody").slideDown("slow");
 
 
@@ -37,7 +47,7 @@ $(document).ready(function() {
  $("body").on("mouseenter", ".pokemonBox", function() {
     // starts hover effect
     $(".panel-body",this).css("opacity", "0.3");
-
+    $('.middle', this).css("opacity", "1");
 
 
 });
@@ -180,5 +190,7 @@ $("body").on("mouseleave", ".pokemonBox", function() {
     }
 
     }
+
+
 
 });
