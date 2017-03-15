@@ -16,12 +16,21 @@ $(document).ready(function() {
         "Box Shadow Color": "--div-box-shadow-color"
     }
 
-  // gives the user initial styles to look at
+// --------------------------------------------------------
+// INITIAL QUERY
+// --------------------------------------------------------
+
+  // gives the user initial styles to look at *** update for loading popular
   for (var j = 0 ; j < initLoadImages.length; j++) {
     disableBool = true;
     pokemonToFind = initLoadImages[j];
     imageSearch(pokemonToFind);
   }
+
+
+// --------------------------------------------------------
+// PANEL SLIDE DOWN AND STYLE GENERATION
+// --------------------------------------------------------
 
   // based on a pokemon palete, user can select one to try altering a page
   $("body").on("click",".pokemonBox", function() {
@@ -33,6 +42,10 @@ $(document).ready(function() {
 
   });
 
+// --------------------------------------------------------
+// SEARCH HANDLER
+// --------------------------------------------------------
+
   //primary search button to look for pokemone name/number
   $("#search-button").on("click",function() {
     if (!disableBool) {
@@ -43,6 +56,10 @@ $(document).ready(function() {
       }
     }
   });
+
+// --------------------------------------------------------
+// HOVER EFFECTS WITH JQUERY
+// --------------------------------------------------------
 
  $("body").on("mouseenter", ".pokemonBox", function() {
     // starts hover effect
@@ -65,8 +82,9 @@ $("#create-file").on("click", function(){
   $("#download-link").slideDown("slow");
 });
 
-
-  //ajax serach request that reaches to pokeAPI 
+// --------------------------------------------------------
+// AJAX FOR POKEMON API 
+// --------------------------------------------------------
   function imageSearch(val) {
       $.ajax({
             url: (queryURL + val),
@@ -85,12 +103,21 @@ $("#create-file").on("click", function(){
     }
 
 
-    //primary function to create panal based on pokemon searched for
+// --------------------------------------------------------
+// COLOR PALETTE PANAL CREATION
+// --------------------------------------------------------
+
   function createPokemon(name,picture) {
     try {
         // this array will hold all the colors in complete rgb format
         var colorPal = [];
-        //creates outer div of hte panel
+        
+        // --------------------------------------------------------
+        // CREATION OF ALL DIVS CLASSES
+        // --------------------------------------------------------
+          //might be able to clean up this code and use less
+        //creates outer div of the panel
+
         var pokemonHolder = $("<div>");
         pokemonHolder.attr("class","panel panel-primary pokemonBox");
         //creates inner div of the panel
@@ -117,7 +144,6 @@ $("#create-file").on("click", function(){
         hoverLookText.attr("class","text");
         var hoverLookGlyph = $("<span>");
         
-
         hoverLookGlyph.attr("class","glyphicon glyphicon-search");
         hoverLookGlyph.attr("aria-hidden","true");
         hoverLookText.append(hoverLookGlyph);
@@ -150,12 +176,18 @@ $("#create-file").on("click", function(){
         pokemonImage.attr("class","displayImage");
         pokemonImage.attr('crossOrigin','Anonymous');
         pokemonImage.crossOrigin = "Anonymous";
+        
+
+        // --------------------------------------------------------
+        // COLOR THIEF
+        // --------------------------------------------------------
         //creates img that is used in color theif for palette creation (200px seems sweet spot)
         img2 = document.createElement('img');
         img2.setAttribute('src', picture);
         img2.setAttribute('width', '200px');
         img2.setAttribute('height', '200px');
         img2.crossOrigin = "Anonymous";
+
 
         // jquery load causes more issues on load functionality
         //load function waits for img to compelete before running color thief
@@ -196,6 +228,10 @@ $("#create-file").on("click", function(){
 
         
         });
+
+         // --------------------------------------------------------
+        // APPEND TO DOCUMENT
+        // --------------------------------------------------------
         //appends all of the elements together to display 
         pokemonPalette[name] = colorPal;
         // console.log(pokemonPalette);
