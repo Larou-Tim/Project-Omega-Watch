@@ -149,6 +149,6 @@
     }
 
     // $("#download-link").on("click", saveAsStyleSheet);
-    $("#submit-create-file").on("click", getSelectedStyleVariables);
+    // $("#create-file").on("click", getSelectedStyleVariables);
      
 // });
