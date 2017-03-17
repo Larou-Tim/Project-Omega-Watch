@@ -37,7 +37,6 @@
         </div>
         <!-- USER LOGIN on Nav Bar @kck-->
         <div class="userAuth">
-
           <input class="input-sm" id="email" type="text" placeholder="Email"/>
           <input class="input-sm" id="password" type="password" placeholder="Password"/>
           <button class="btn btn-default btn-sm" id="register">Register</button>
@@ -45,56 +44,62 @@
           <button class="btn btn-default btn-sm" id="logout">Sign Out</button>
           <output id="message"></output> <!-- If error, display here -->
         </div>
+        
         <!-- +++++ -->
       </div>
     </nav>
     <div class="container">
       <!-- ++++++++++++++++++++++++ -->
       <div class="row">
-        <div class="col-lg-6">
-          <div class="input-group">
-            <div class="input-group-btn">
-              <button class="btn btn-warning" type="button" id="search-button" >Pokemon Search</button>
-            </div>
-            <input type="text" class="form-control" id="search-param" placeholder="Pokemon name or number" disabled="">
-            </div><!-- /input-group -->
-            </div><!-- /.col-lg-6 -->
-            </div><!-- /.row -->
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button class="btn btn-warning" type="button" id="search-button" >Pokemon Search</button>
+          </span>
+          <input type="text" class="form-control" id="search-param" placeholder="Pokemon name or number" disabled="">
+          <span class="input-group-btn">
+            <button class="btn btn-link" type="button" id="help-button" data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-question-sign"></span></button>
+          </span>
+          </div><!-- /input-group -->
+          </div><!-- /.row -->
+          <div class="row">
             <div id="imagePlace"></div>
-            
           </div>
-          <br>
-          <div class="container" id="lowerBody">
-            <!-- Headers and Style -->
-            <!-- Draggable colors -->
-            <div class="row row-eq-height">
-              <div class="col-sm-3 panel panel-default">
-                <div class="panel-body palette-box"></div>
-              </div>
-              <!-- Drop container -->
-              <div class="col-sm-6 panel panel-default">
-                <div class="panel-body style-container"></div>
-              </div>
-              <div class="col-sm-3 panel panel-default">
-                <div class="panel-body">
-                  <!-- Generate/ Update File and Download Button -->
-                  <button class="btn btn-success btn-block" id="create-file">Generate Your CSS</button>
-                  <a href="" download="" id="download-link"><button class="btn btn-link btn-block">Download your CSS File</button></a>
-                </div>
+          
+        </div>
+        <br>
+        <!-- Start Lower body -->
+        <div class="container" id="lowerBody">
+          <!-- Headers and Style -->
+          <!-- Draggable colors -->
+          <!-- Start Drag/drop and DL links -->
+          <div class="row row-eq-height">
+            <div class="col-sm-3 panel panel-default">
+              
+              <div class="panel-body palette-box"></div>
+            </div>
+
+            <!-- Drop container -->
+            <div class="col-sm-6 panel panel-default">
+              <div class="panel-body style-container"></div>
+            </div>
+            <div class="col-sm-3 panel panel-default">
+              <div class="panel-body">
+                <!-- Generate/ Update File and Download Button -->
+                <button class="btn btn-success btn-block" id="create-file">Generate Your CSS</button>
+                <a href="" download="" id="download-link"><button class="btn btn-link btn-block">Download your CSS File</button></a>
               </div>
             </div>
-            <!-- Row is content of the example -->
-            <div class="row">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="container">
-                            <ul class="nav nav-tabs nav-justified">
-                                <li class="active"> <a data-toggle="tab" href="#example1">Example 1</a></li>
-                                <li>                <a data-toggle="tab" href="#example2">Example 2</a></li>
-                                <li>                <a data-toggle="tab" href="#example3">Example 3</a></li>
-                            </ul>
-                            <div class="tab-content example-markup">
-                                <div id="example1" class="tab-pane fade in active">
+          </div>
+          <!-- End Drag/drop and DL links -->
+          <!-- Row is content of the example -->
+          <div class="row">
+            <!-- <div class="panel-body"> --><ul class="nav nav-tabs nav-justified">
+            <li class="active"><a data-toggle="tab" href="#example1">Example 1</a></li>
+            <li><a data-toggle="tab" href="#example2">Example 2</a></li>
+            <li><a data-toggle="tab" href="#example3">Example 3</a></li>
+          </ul>
+          <div class="tab-content example-markup">
+            <div id="example1" class="example-container tab-pane fade in active">
                                     <h1>Here is an example</h1>
                                     <p> Just drag colors that you want to test! <br>
                                         The colors will change all of the elements here.
@@ -108,29 +113,58 @@
 
                                     <p>Your favorite pokemon can be saved if you are logged in. <br>
                                         Pokemon that are saved the most will be loaded when you first visit.</p>
-                                </div>
-
-                                <div id="example2" class="tab-pane fade">
-                                    <p>Stuff</p>
-                                </div>
-
-                                <div id="example3" class="tab-pane fade">
-                                      <h1>Check it.</h1>
-                                      <p> I wanna be the very best, <br>
-                                        Like no one ever was. <br>
-                                        To catch them all is my real test, <br>
-                                      To train them is my cause, </p>
-                                      <p>
-                                        I will travel across the land, <br>
-                                        Searching far and wide. <br>
-                                        Teach Pokemon to understand <br>
-                                      The power that's inside! </p>
-                                </div> <!-- Example #3-->
-                            </div> <!-- Tab Content -->
-                        </div> <!-- container for 3 examples -->
-                    </div> <!-- panel body -->
-                </div> <!-- Panel-->
-            </div> <!-- Row-->
+            </div>
+            <div id="example2" class="example-container tab-pane fade">
+              bla
+            </div>
+            
+            <div id="example3" class="example-container tab-pane fade">
+              <h1>Check it.</h1>
+              <p> I wanna be the very best, <br>
+                Like no one ever was. <br>
+                To catch them all is my real test, <br>
+              To train them is my cause, </p>
+              <p>
+                I will travel across the land, <br>
+                Searching far and wide. <br>
+                Teach Pokemon to understand <br>
+              The power that's inside! </p>
+            </div>
+          </div>
+        </div>
+        <!-- end example-markup -->
+        <!-- </div> -->
+      </div>
+      <!--  end content examples -->
       </div> <!-- Lower Body -->
-          </body>
-        </html>
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            Fotter Content Herrrr
+          </div>
+        </div>
+      </footer>
+      <!-- End Footer -->
+      <!-- Modal for help -->
+      <!-- Modal -->
+      <div id="help-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close btn btn-link" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Help</h4>
+            </div>
+            <div class="modal-body">
+              <p>Search for any pokemon by name or by number. A color palette for the chosen pokemon will be generated. Click magnifying glass to select pokemon. Drag and drop from swatches to containers for element selection. Once satisfied, you may download the set colors as a style sheet to be used in your own HTML pages.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>
+
