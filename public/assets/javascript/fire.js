@@ -123,6 +123,22 @@ $(document).ready(function(){
   var trending = [];
   var popularity = [];
   var profile = [];
+
+  //IF DATABASE GETS FUCKED UP -> THIS RESETS IT
+  // trending = [
+  //   {name:"blank", looks:0}
+  // ];
+  // popularity = [
+  //   {name:"blank", saves:0}
+  // ];
+  // profile = [
+  //   {name:"blank", savedPokemon:["temp"]}
+  // ];
+  // database.ref().set({
+  //       trending: trending,
+  //       popularity: popularity,
+  //       profile: profile
+  // });
   database.ref().once("value", function(snapshot){
       trending = snapshot.val().trending;
       popularity = snapshot.val().popularity;
