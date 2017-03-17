@@ -16,6 +16,7 @@
 
 ## 4. Show the app running
 		See the website live [here](htpps://project-omega-watch.firebaseapp.com)
+		<htpps://project-omega-watch.firebaseapp.com>
 		[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
 
 ## 5. What features would we like to add
@@ -23,3 +24,4 @@
 
 See the website live [here](htpps://project-omega-watch.firebaseapp.com)
 [I'm an inline-style link with title](https://www.google.com "Google's Homepage")
+<htpps://project-omega-watch.firebaseapp.com>
