@@ -5,6 +5,7 @@ $(document).ready(function() {
   //prevents user from running too much at once 
   var disableBool;
   var initLoadImages = [1,9,150,'magikarp'];
+  
   var pokemonPalette = {};
 
    var cssVariableObject = {   
@@ -26,7 +27,6 @@ $(document).ready(function() {
     $("#search-param").attr('placeholder','Please Wait');
     imageSearch(pokemonToFind);
   }
-
 
 // --------------------------------------------------------
 // PANEL SLIDE DOWN AND STYLE GENERATION
@@ -66,7 +66,7 @@ $(document).ready(function() {
           var pokemonToFind = $("#search-param").val().trim().toLowerCase();
           var indexPokemon = alreadySearched.indexOf(pokemonToFind);
 
-          console.log(indexPokemon, alreadySearched );
+          // console.log(indexPokemon, alreadySearched );
 
           if (pokemonToFind != "" && indexPokemon == -1) {
             imageSearch(pokemonToFind);
@@ -113,7 +113,18 @@ $("#create-file").on("click", function(){
   function imageSearch(val) {
       $.ajax({
             url: (queryURL + val),
-            method: "GET"
+            method: "GET" ,
+
+            //error handling if user mistypes pokemon name or enters something thats not a pokemon
+            error:function (xhr, ajaxOptions, thrownError){
+            if(xhr.status==404) {
+                disableBool = false;
+                $("#search-param").val("");
+                $("#search-param").attr('placeholder','Pokemon not found...');
+                $("#search-param").removeAttr('disabled');
+              }
+            }
+
           }).done(function(response) { 
               //returns name and picture from API
              pokemonName = response.name;
@@ -132,7 +143,6 @@ $("#create-file").on("click", function(){
             }
           });
     }
-
 
 // --------------------------------------------------------
 // COLOR PALETTE PANAL CREATION
@@ -258,12 +268,11 @@ $("#create-file").on("click", function(){
       
         });
 
-         // --------------------------------------------------------
+        // --------------------------------------------------------
         // APPEND TO DOCUMENT
         // --------------------------------------------------------
         //appends all of the elements together to display 
         pokemonPalette[name] = colorPal;
-        // console.log(pokemonPalette);
         rightCol.append(pokemonImage);
         leftCol.append(leftColRow);
         rowPlace.append(leftCol);
