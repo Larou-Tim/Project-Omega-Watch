@@ -5,6 +5,7 @@ $(document).ready(function() {
   //prevents user from running too much at once 
   var disableBool;
   var initLoadImages = [1,9,150,'magikarp'];
+  
   var pokemonPalette = {};
 
    var cssVariableObject = {   
@@ -26,7 +27,7 @@ $(document).ready(function() {
     $("#search-param").attr('placeholder','Please Wait');
     imageSearch(pokemonToFind);
   }
-  
+
 // --------------------------------------------------------
 // PANEL SLIDE DOWN AND STYLE GENERATION
 // --------------------------------------------------------
