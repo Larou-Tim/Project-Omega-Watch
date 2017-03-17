@@ -16,8 +16,10 @@
 
 ## 4. Show the app running
 		See the website live [here](htpps://project-omega-watch.firebaseapp.com)
+		[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
 
 ## 5. What features would we like to add
 		The ability to save a color profile to the database.
 
 See the website live [here](htpps://project-omega-watch.firebaseapp.com)
+[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
