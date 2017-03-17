@@ -23,4 +23,4 @@
 		The ability to save a color profile to the database.
 
 See the website live 
-[here](htpps://project-omega-watch.firebaseapp.com)
+[here](project-omega-watch.firebaseapp.com)
