@@ -15,7 +15,7 @@
 	Tim built the backend to search for pokemon and pull what colors make that pokemon image.
 
 ## 4. Show the app running
-		See the website live [here](https://project-omega-watch.firebaseapp.com/)
+		See the website live [here](project-omega-watch.firebaseapp.com/)
 
 ## 5. What features would we like to add
 		The ability to save a color profile to the database.
