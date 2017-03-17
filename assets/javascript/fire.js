@@ -43,7 +43,7 @@ $(document).ready(function(){
   // --------------------------------------------------------
   function registerFire(){
     if(firebase.auth().currentUser){
-      firebase.auth().signout();
+      logoutFire();
     } else {
       var email = $("#email").val();
       var password = $("#password").val();
@@ -226,6 +226,7 @@ $(document).ready(function(){
                   break;
                 }
               }
+            break;
             }
             else if((i+1)==profile.length && profile[i].name != user){
               profile[i+1]={name:user,savedPokemon:[pokeName]};
