@@ -223,11 +223,12 @@ $(document).ready(function(){
                   profile[i].savedPokemon.push(pokeName);
                   $("#message").html("Pokemon saved to profile.");
                   unhide();
+                  break;
                 }
               }
             }
             else if((i+1)==profile.length && profile[i].name != user){
-              profile[i+1]={name:user,savedPokemon:[]};
+              profile[i+1]={name:user,savedPokemon:[pokeName]};
               $("#message").html("Pokemon saved to profile.");
               unhide();
             }
