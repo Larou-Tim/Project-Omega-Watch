@@ -289,6 +289,7 @@ $("#create-file").on("click", function(){
 
     }
 
+// Help button modal
 
 
 });
