@@ -19,6 +19,8 @@ $(document).ready(function(){
   };
   firebase.initializeApp(config);
 
+  //if they are revisiting the page, make sure they are logged out
+  logoutFire();
   // --------------------------------------------------------
   // ACCOUNT SIGN IN
   // --------------------------------------------------------
@@ -32,7 +34,7 @@ $(document).ready(function(){
       var errorCode = error.code;
       var errorMessage = error.message;
       $("#message").html(errorMessage);
-      unhide();
+      signedOut();
     });
   }
 
@@ -181,28 +183,68 @@ $(document).ready(function(){
   // --------------------------------------------------------
   //same concept as hoverLook but permanent & on save
   $("body").on("click", ".hoverSave", function(){
-    //get the name of pokemon from parent box
-    pokeName = $(this).parent().parent().attr("pokemonName");
-    //check each pokemon name in the array to see if the looked at one is there
-    var exists = 0;
-    database.ref().once("value", function(snapshot){
-      popularity = snapshot.val().popularity;
-      for(i=0; i<popularity.length; i++){
-        if(popularity[i].name == pokeName){ //add amount to that name
-          popularity[i].saves++;
-          exists = 1;
-        }
+    //CHECK IF THEY ARE LOGGED IN
+    var user = firebase.auth().currentUser;
+      $("#message").css("visibility", "hidden");
+      //if yes continue
+      if(user){
+        //get the name of pokemon from parent box
+        pokeName = $(this).parent().parent().attr("pokemonName");
+        //check each pokemon name in the array to see if the looked at one is there
+        var exists = 0;
+        database.ref().once("value", function(snapshot){
+          popularity = snapshot.val().popularity;
+          profile = snapshot.val().profile;
+          console.log(profile);
+          for(i=0; i<popularity.length; i++){
+            if(popularity[i].name == pokeName){ //add amount to that name
+              popularity[i].saves++;
+              exists = 1;
+            }
+          }
+          //if the pokemon hasnt been looked at yet then add it
+          if(exists == 0){
+            popularity.push({name:pokeName, saves:1});
+          }
+          //add their profile and pokemon saves
+          var user = $("#email").val();
+          for(var i=0; i<profile.length; i++){
+            if(profile[i].name == user){
+              //check if pokemon save already exists
+              for(var j=0; j<profile[i].savedPokemon.length; j++){
+                if(profile[i].savedPokemon[j] == pokeName){
+                  //then do nothing because its already been saved
+                  $("#message").html("Already saved.");
+                  unhide();
+                  break;
+                }
+                else if((j+1)== profile[i].savedPokemon.length && profile[i].savedPokemon[j] != pokeName){
+                  //if the pokemon save doesn't exist then add it
+                  profile[i].savedPokemon.push(pokeName);
+                  $("#message").html("Pokemon saved to profile.");
+                  unhide();
+                }
+              }
+            }
+            else if((i+1)==profile.length && profile[i].name != user){
+              profile[i+1]={name:user,savedPokemon:[]};
+              $("#message").html("Pokemon saved to profile.");
+              unhide();
+            }
+          }
+
+          database.ref().set({
+            trending: trending,
+            popularity: popularity,
+            profile: profile
+          });
+        });
+      } 
+      //if not give a notification to login for saves
+      else {
+        $("#message").css("visibility", "visible");
+        $("#message").html("You need to login to save.");
       }
-      //if the pokemon hasnt been looked at yet then add it
-      if(exists == 0){
-        popularity.push({name:pokeName, saves:1});
-      }
-      database.ref().set({
-        trending: trending,
-        popularity: popularity,
-        profile: profile
-      });
-    });
   });
   
   // --------------------------------------------------------

@@ -113,7 +113,16 @@ $("#create-file").on("click", function(){
   function imageSearch(val) {
       $.ajax({
             url: (queryURL + val),
-            method: "GET"
+            method: "GET" ,
+            error:function (xhr, ajaxOptions, thrownError){
+            if(xhr.status==404) {
+                disableBool = false;
+                $("#search-param").val("");
+                $("#search-param").attr('placeholder','Pokemon not found...');
+                $("#search-param").removeAttr('disabled');
+              }
+            }
+
           }).done(function(response) { 
               //returns name and picture from API
              pokemonName = response.name;
