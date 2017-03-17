@@ -114,8 +114,11 @@ $("#create-file").on("click", function(){
       $.ajax({
             url: (queryURL + val),
             method: "GET" ,
+<<<<<<< HEAD
+=======
 
             //error handling if user mistypes pokemon name or enters something thats not a pokemon
+>>>>>>> e0dc7ba989192b8b745de5691f1b83fd75f459e7
             error:function (xhr, ajaxOptions, thrownError){
             if(xhr.status==404) {
                 disableBool = false;
