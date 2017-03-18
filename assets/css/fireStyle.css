@@ -36,20 +36,20 @@ Layout2 Stat Display
 	color:white;
 	visibility:hidden;
 }
-#register, #login, #logout{
+#register, #login, #logout, #profile{
 	background-color:white;
 	border-width:2px 2px 2px 2px;
 	border-style:solid;
 	border-color:black;
 	color:black;
 }
-#register:hover, #login:hover, #logout:hover, #email:hover, #password:hover{
+#register:hover, #login:hover, #logout:hover, #email:hover, #password:hover, #profile:hover{
 	box-shadow: 2px 2px 2px black;
 }
-#register:active, #login:active, #logout:active{
+#register:active, #login:active, #logout:active, #profile:active{
 	box-shadow: 2px 2px 2px red;
 	border-color:red;
 }
-#register:focus, #login:focus, #logout:focus, #email:focus, #password:focus{
+#register:focus, #login:focus, #logout:focus, #email:focus, #password:focus, #profile:focus{
 	outline:0;
 }

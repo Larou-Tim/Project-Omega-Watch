@@ -21,8 +21,8 @@
     
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- Fire js/css used for user authentication -->
-    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
-    <script src="assets/javascript/fire.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script type="text/javascript" src="assets/javascript/fire.js"></script>
     <link rel="stylesheet" href="assets/css/fireStyle.css">
     <!-- ++++++++++++++++++++++++ -->
     
@@ -42,7 +42,8 @@
           <button class="btn btn-default btn-sm" id="register">Register</button>
           <button class="btn btn-default btn-sm" id="login">Login</button>
           <button class="btn btn-default btn-sm" id="logout">Sign Out</button>
-          <output id="message"></output> <!-- If error, display here -->
+          <button class="btn btn-default btn-sm" id="profile">Saves</button>
+          <div><output id="message"></output></div> <!-- If error, display here -->
         </div>
         
         <!-- +++++ -->
@@ -56,10 +57,14 @@
             <button class="btn btn-warning" type="button" id="search-button" >Pokemon Search</button>
           </span>
           <input type="text" class="form-control" id="search-param" placeholder="Pokemon name or number" disabled="">
+          <div class="input-group-btn">
+            <button class="btn btn-warning" type="button" id="trending" >Trending</button>
+            <button class="btn btn-warning" type="button" id="popular" >Popular Saves</button>
+          </div>
           <span class="input-group-btn">
             <button class="btn btn-link" type="button" id="help-button" data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-question-sign"></span></button>
           </span>
-          </div><!-- /input-group -->
+        </div><!-- /input-group -->
           </div><!-- /.row -->
           <div class="row">
             <div id="imagePlace"></div>
