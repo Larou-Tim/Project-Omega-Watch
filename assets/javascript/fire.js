@@ -43,7 +43,7 @@ $(document).ready(function(){
   // --------------------------------------------------------
   function registerFire(){
     if(firebase.auth().currentUser){
-      logoutFire();
+      firebase.auth().signOut();
     } else {
       var email = $("#email").val();
       var password = $("#password").val();
@@ -195,7 +195,6 @@ $(document).ready(function(){
         database.ref().once("value", function(snapshot){
           popularity = snapshot.val().popularity;
           profile = snapshot.val().profile;
-          console.log(profile);
           for(i=0; i<popularity.length; i++){
             if(popularity[i].name == pokeName){ //add amount to that name
               popularity[i].saves++;
@@ -208,32 +207,30 @@ $(document).ready(function(){
           }
           //add their profile and pokemon saves
           var user = $("#email").val();
-          for(var i=0; i<profile.length; i++){
-            if(profile[i].name == user){
-              //check if pokemon save already exists
-              for(var j=0; j<profile[i].savedPokemon.length; j++){
-                if(profile[i].savedPokemon[j] == pokeName){
-                  //then do nothing because its already been saved
-                  $("#message").html("Already saved.");
-                  unhide();
-                  break;
-                }
-                else if((j+1)== profile[i].savedPokemon.length && profile[i].savedPokemon[j] != pokeName){
-                  //if the pokemon save doesn't exist then add it
-                  profile[i].savedPokemon.push(pokeName);
-                  $("#message").html("Pokemon saved to profile.");
-                  unhide();
-                  break;
-                }
-              }
-            break;
-            }
-            else if((i+1)==profile.length && profile[i].name != user){
-              profile[i+1]={name:user,savedPokemon:[pokeName]};
-              $("#message").html("Pokemon saved to profile.");
-              unhide();
-            }
-          }
+         	for(var i=0; i<profile.length; i++){
+	            if(profile[i].name == user){
+	              //check if pokemon save already exists
+		            for(var j=0; j<profile[i].savedPokemon.length; j++){
+		                if(profile[i].savedPokemon[j] == pokeName){
+		                  //then do nothing because its already been saved
+		                  $("#message").html("Already saved.");
+		                  unhide();
+		                  break;
+		                }
+		                else if((j+1)== profile[i].savedPokemon.length && profile[i].savedPokemon[j] != pokeName){
+		                  //if the pokemon save doesn't exist then add it
+		                  profile[i].savedPokemon.push(pokeName);
+		                  $("#message").html("Pokemon saved to profile.");
+		                  unhide();
+		                }
+		            }
+	            }
+	            else if((i+1)==profile.length && profile[i].name != user){
+	              profile[i+1]={name:user,savedPokemon:[]};
+	              $("#message").html("Pokemon saved to profile.");
+	              unhide();
+	            }
+          	}
 
           database.ref().set({
             trending: trending,
