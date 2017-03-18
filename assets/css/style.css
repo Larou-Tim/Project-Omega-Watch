@@ -105,12 +105,15 @@ html {
 	background-color: var(--div-bg-color);
 	font-family: sans-serif;
 	font-weight: bold;
+	padding: 10px;
 }
+
 
 .example-container {
 	background-color: var(--body-bg-color);
 	border: 3px solid var(--border-color);
 	box-shadow: 5px 5px var(--div-box-shadow-color);
+	padding: 10px;
 }
 
 
@@ -142,8 +145,8 @@ div.palette-color {
 }
 
 .style-box {
-	margin: 0 10px;
-	border: 1px solid #dddddd;
+	margin: 7px;
+	border: 1px solid #464545;
 	padding: 10px;
 	font-size: .7em;
 }
@@ -211,6 +214,10 @@ div.palette-color {
 	border-color: var(--border-color);/*Set by poke script*/
 }
 
+.pokePanel-content li {
+	color: var(--paragraph-text-color);
+}
+
 /*-------------------------------*/
 /*POKE TEXTUAL THINGS*/
 /*-------------------------------*/
@@ -243,13 +250,26 @@ html {
 }
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 100px;
+  margin-bottom: 150px;
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 55px;
+  height: 105px;
   background-color: #00bc8c;
+
+}
+
+.footer ul{
+  list-style-type: none;
+}
+
+.footer .container {
+	padding-top: 20px;
+}
+
+.footer p {
+	color: #08da96;
 }
