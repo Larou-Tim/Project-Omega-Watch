@@ -206,6 +206,7 @@ div.palette-color {
 	border-width:2px 2px 2px 2px;
 	border-color: var(--border-color);/*Set by poke script*/
 	color: var(--header-text-color);/*set by poke script*/
+	background-color: var(--div-bg-color); 
 }
 .pokePanel-content{
 	padding:15px 5px 5px 5px;
