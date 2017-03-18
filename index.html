@@ -5,12 +5,14 @@
     <title>Pokemon Theme Tool</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+    <link rel="stylesheet" href="assets/css/grid.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css" rel="stylesheet" integrity="sha384-S7YMK1xjUjSpEnF4P8hPUcgjXYLZKK3fQW1j5ObLSl787II9p8RO9XUGehRmKsxd" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js">    </script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
     crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -77,7 +79,6 @@
               
               <div class="panel-body palette-box"></div>
             </div>
-
             <!-- Drop container -->
             <div class="col-sm-6 panel panel-default">
               <div class="panel-body style-container"></div>
@@ -100,71 +101,172 @@
           </ul>
           <div class="tab-content example-markup">
             <div id="example1" class="example-container tab-pane fade in active">
-                                    <h1>Here is an example</h1>
-                                    <p> Just drag colors that you want to test! <br>
-                                        The colors will change all of the elements here.
-                                        This will allow you to test what a theme with your selected pokemon will look like. 
-                                        </p>
-                                    
-                                    <p>After you find something you like, <br>
-                                        click on the generate css button and you <br>
-                                        can save the css to your computer for use!<br>
-                                    </p>
-
-                                    <p>Your favorite pokemon can be saved if you are logged in. <br>
-                                        Pokemon that are saved the most will be loaded when you first visit.</p>
+              <h1>Here is an example</h1>
+              <p> Just drag colors that you want to test! <br>
+                The colors will change all of the elements here.
+                This will allow you to test what a theme with your selected pokemon will look like.<br>
+                After you find something you like, <br>
+                click on the generate css button and you <br>
+                can save the css to your computer for use!<br>
+              </p>
+              <p>Your favorite pokemon can be saved if you are logged in. <br>
+              Pokemon that are saved the most will be loaded when you first visit.</p>
             </div>
-            <div id="example2" class="example-container tab-pane fade">
-              bla
+            <div id="example2" class="example-container tab-pane fade"><div class="row-grid">
+              <div class="col-2"></div>
+              <div class="pokePanel col-3">
+                <div class="pokePanel-title"><h3>Panel Title 1</h3></div><!--  PANEL TITLE -->
+                <div class="pokePanel-content">
+                  <div class="row-grid">
+                    <div><button class="pokeButton col-5" type="button">Option Text</button></div>
+                    <div class="col-2"></div>
+                    <div><button class="pokeButton col-5" type="button">Option Text</button></div>
+                  </div>
+                  <div class="row-grid">
+                    <div><button class="pokeButton col-5" type="button">Option Text</button></div>
+                    <div class="col-2"></div>
+                    <div><button class="pokeButton col-5" type="button">Option Text</button></div>
+                  </div>
+                  </div><!-- PANEL CONTENT -->
+                </div>
+                <div class="col-2"></div>
+                <div class="pokePanel col-3">
+                  <div class="pokePanel-title"><h3>Panel Title 2</h3></div><!--  PANEL TITLE -->
+                  <div class="pokePanel-content">
+                    <div class="pokeText">Content Text</div>
+                    </div><!-- PANEL CONTENT -->
+                  </div>
+                  <div class="col-2"></div>
+                </div>
+                <!-- +++++++++++++++++++ -->
+                <!-- MAIN HUD DISPLAY OVERVIEW -->
+                <!-- +++++++++++++++++++ -->
+                <div class="row-grid pokeHUD">
+                  <div class="col-3">
+                    <a><p>Stat 1</p></a><!--  Stat -->
+                    <a><p>Stat 2</p></a><!--  Stat -->
+                    <a><p>Stat 3</p></a><!--  Stat -->
+                    <a><p>Stat 4</p></a><!--  Stat -->
+                  </div>
+                  <div class="col-6">
+                    <canvas>
+                    <img/>
+                    </canvas><!-- Add pokemon gif -->
+                  </div>
+                  <div class="col-3">
+                    <a><p>Stat 5</p></a><!--  Stat -->
+                    <a><p>Stat 6</p></a><!--  Stat -->
+                    <a><p>Stat 7</p></a><!--  Stat -->
+                    <a><p>Stat 8</p></a><!--  Stat -->
+                  </div>
+                </div>
+                <!-- +++++++++++++++++++ -->
+                <!-- BACKGROUND INFO -->
+                <!-- +++++++++++++++++++ -->
+                <div class="row-grid">
+                  <div class="col-2"></div>
+                  <div class="pokePanel col-8">
+                    <div class="pokePanel-title"><h3>Background Info</h3></div><!--  PANEL TITLE -->
+                    <div class="pokePanel-content">
+                      <div class="pokeText">Content Text</div>
+                      </div><!-- PANEL CONTENT -->
+                    </div>
+                    <div class="col-2"></div>
+                  </div>
+                  <!-- +++++++++++++++++++ -->
+                  <!-- STRENGTHS & WEAKNESSES -->
+                  <!-- +++++++++++++++++++ -->
+                  <div clas="row-grid">
+                    <div class="col-2"></div>
+                    <div>
+                      <div class="pokePanel col-3">
+                        <div class="pokePanel-title"><h3>Strengths</h3></div>
+                        <div class="pokePanel-content">
+                          <ul>
+                            <li>Example</li>
+                            <li>Example</li>
+                            <li>Example</li>
+                            <li>Example</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-2"></div>
+                      <div class="pokePanel col-3">
+                        <div class="pokePanel-title"><h3>Weaknesses</h3></div>
+                        <div class="pokePanel-content">
+                          <ul>
+                            <li>Example</li>
+                            <li>Example</li>
+                            <li>Example</li>
+                            <li>Example</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-2"></div>
+                  </div>
+                  <!-- +++++++++++++++++++ -->
+                  <!-- FUN FACTS -->
+                  <!-- +++++++++++++++++++ -->
+                  <div class="row-grid">
+                    <div class="col-2"></div>
+                    <div class="pokePanel col-8">
+                      <div class="pokePanel-title"><h3>Fun Facts</h3></div>
+                      <div class="pokePanel-content">
+                        <ul>
+                          <li>Example</li>
+                          <li>Example</li>
+                          <li>Example</li>
+                          <li>Example</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-2"></div>
+                  </div>
+                </div>
+                
+                <div id="example3" class="example-container tab-pane fade">
+                  <h1>Check it.</h1>
+                  <p> I wanna be the very best, <br>
+                    Like no one ever was. <br>
+                    To catch them all is my real test, <br>
+                    To train them is my cause, <br>
+                    I will travel across the land, <br>
+                    Searching far and wide. <br>
+                    Teach Pokemon to understand <br>
+                  The power that's inside! </p>
+                </div>
+              </div>
             </div>
-            
-            <div id="example3" class="example-container tab-pane fade">
-              <h1>Check it.</h1>
-              <p> I wanna be the very best, <br>
-                Like no one ever was. <br>
-                To catch them all is my real test, <br>
-              To train them is my cause, </p>
-              <p>
-                I will travel across the land, <br>
-                Searching far and wide. <br>
-                Teach Pokemon to understand <br>
-              The power that's inside! </p>
+            <!-- end example-markup -->
+            <!-- </div> -->
+          </div>
+          <!--  end content examples -->
+          </div> <!-- Lower Body -->
+          <!-- Footer -->
+          <footer class="footer">
+            <div class="container">
+              <div class="row">
+                Fotter Content Herrrr
+              </div>
+            </div>
+          </footer>
+          <!-- End Footer -->
+          <!-- Modal for help -->
+          <!-- Modal -->
+          <div id="help-modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close btn btn-link" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title text-center">Help</h4>
+                </div>
+                <div class="modal-body">
+                  <p>Search for any pokemon by name or by number.<br> A color palette for the chosen pokemon will be generated.<br> Click magnifying glass to select pokemon.<br> Drag and drop from swatches to containers for element selection.<br> Once satisfied, you may download the set colors as a style sheet to be used in your own HTML pages.</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- end example-markup -->
-        <!-- </div> -->
-      </div>
-      <!--  end content examples -->
-      </div> <!-- Lower Body -->
-      <!-- Footer -->
-      <footer class="footer">
-        <div class="container">
-          <div class="row">
-            Fotter Content Herrrr
-          </div>
-        </div>
-      </footer>
-      <!-- End Footer -->
-      <!-- Modal for help -->
-      <!-- Modal -->
-      <div id="help-modal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close btn btn-link" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Help</h4>
-            </div>
-            <div class="modal-body">
-              <p>Search for any pokemon by name or by number. A color palette for the chosen pokemon will be generated. Click magnifying glass to select pokemon. Drag and drop from swatches to containers for element selection. Once satisfied, you may download the set colors as a style sheet to be used in your own HTML pages.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </body>
-  </html>
-
+        </body>
+      </html>
