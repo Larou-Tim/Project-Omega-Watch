@@ -5,12 +5,14 @@
     <title>Pokemon Theme Tool</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+    <link rel="stylesheet" href="assets/css/grid.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css" rel="stylesheet" integrity="sha384-S7YMK1xjUjSpEnF4P8hPUcgjXYLZKK3fQW1j5ObLSl787II9p8RO9XUGehRmKsxd" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js">    </script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
     crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -21,8 +23,8 @@
     
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- Fire js/css used for user authentication -->
-    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
-    <script src="assets/javascript/fire.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script type="text/javascript" src="assets/javascript/fire.js"></script>
     <link rel="stylesheet" href="assets/css/fireStyle.css">
     <!-- ++++++++++++++++++++++++ -->
     
@@ -33,104 +35,258 @@
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Pokemon Theme Tool</a>
+          <p class="navbar-brand" href="#">Pokemon Theme Tool</p>
         </div>
         <!-- USER LOGIN on Nav Bar @kck-->
         <div class="userAuth">
-
           <input class="input-sm" id="email" type="text" placeholder="Email"/>
           <input class="input-sm" id="password" type="password" placeholder="Password"/>
           <button class="btn btn-default btn-sm" id="register">Register</button>
           <button class="btn btn-default btn-sm" id="login">Login</button>
           <button class="btn btn-default btn-sm" id="logout">Sign Out</button>
-          <output id="message"></output> <!-- If error, display here -->
+          <button class="btn btn-default btn-sm" id="profile">Saves</button>
+          <div><output id="message"></output></div> <!-- If error, display here -->
         </div>
+        
         <!-- +++++ -->
       </div>
     </nav>
     <div class="container">
       <!-- ++++++++++++++++++++++++ -->
       <div class="row">
-        <div class="col-lg-6">
-          <div class="input-group">
-            <div class="input-group-btn">
-              <button class="btn btn-warning" type="button" id="search-button" >Pokemon Search</button>
-            </div>
-            <input type="text" class="form-control" id="search-param" placeholder="Pokemon name or number" disabled="">
-            </div><!-- /input-group -->
-            </div><!-- /.col-lg-6 -->
-            </div><!-- /.row -->
-            <div id="imagePlace"></div>
-            
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button class="btn btn-warning" type="button" id="search-button" >Pokemon Search</button>
+          </span>
+          <input type="text" class="form-control" id="search-param" placeholder="Pokemon name or number" disabled="">
+          <div class="input-group-btn">
+            <button class="btn btn-warning" type="button" id="trending" >Trending</button>
+            <button class="btn btn-warning" type="button" id="popular" >Popular Saves</button>
           </div>
-          <br>
-          <div class="container" id="lowerBody">
-            <!-- Headers and Style -->
-            <!-- Draggable colors -->
-            <div class="row row-eq-height">
-              <div class="col-sm-3 panel panel-default">
-                <div class="panel-body palette-box"></div>
+          <span class="input-group-btn">
+            <button class="btn btn-link" type="button" id="help-button" data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-question-sign"></span></button>
+          </span>
+        </div><!-- /input-group -->
+          </div><!-- /.row -->
+          <div class="row">
+            <div id="imagePlace"></div>
+          </div>
+          
+        </div>
+        <br>
+        <!-- Start Lower body -->
+        <div class="container" id="lowerBody">
+          <!-- Headers and Style -->
+          <!-- Draggable colors -->
+          <!-- Start Drag/drop and DL links -->
+          <div class="row row-eq-height">
+            <div class="col-sm-3 panel panel-default">
+              
+              <div class="panel-body palette-box"></div>
+            </div>
+            <!-- Drop container -->
+            <div class="col-sm-6 panel panel-default">
+              <div class="panel-body style-container"></div>
+            </div>
+            <div class="col-sm-3 panel panel-default">
+              <div class="panel-body">
+                <!-- Generate/ Update File and Download Button -->
+                <button class="btn btn-success btn-block" id="create-file">Generate Your CSS</button>
+                <a href="" download="" id="download-link"><button class="btn btn-link btn-block">Download your CSS File</button></a>
               </div>
-              <!-- Drop container -->
-              <div class="col-sm-6 panel panel-default">
-                <div class="panel-body style-container"></div>
+            </div>
+          </div>
+          <!-- End Drag/drop and DL links -->
+          <!-- Row is content of the example -->
+          <div class="row">
+            <!-- <div class="panel-body"> --><ul class="nav nav-tabs nav-justified">
+            <li class="active"><a data-toggle="tab" href="#example1">Example 1</a></li>
+            <li><a data-toggle="tab" href="#example2">Example 2</a></li>
+            <li><a data-toggle="tab" href="#example3">Example 3</a></li>
+          </ul>
+          <div class="tab-content example-markup">
+            <div id="example1" class="example-container tab-pane fade in active">
+              <div><h1>Here is an example</h1></div>
+              <div><p> Just drag colors that you want to test! <br>
+                              The colors will change all of the elements here.
+                              This will allow you to test what a theme with your selected pokemon will look like.<br>
+                              After you find something you like, <br>
+                              click on the generate css button and you <br>
+                              can save the css to your computer for use!<br>
+                              Your favorite pokemon can be saved if you are logged in. <br>
+                            Pokemon that are saved the most will be loaded when you first visit.</p></div>
+            </div>
+            <div id="example2" class="example-container tab-pane fade"><div class="row-grid">
+              <div class="col-2"></div>
+              <div class="pokePanel col-3">
+                <div class="pokePanel-title"><h3>Panel Title 1</h3></div><!--  PANEL TITLE -->
+                <div class="pokePanel-content">
+                  <div class="row-grid">
+                    <div><button class="pokeButton col-5" type="button">Option Text</button></div>
+                    <div class="col-2"></div>
+                    <div><button class="pokeButton col-5" type="button">Option Text</button></div>
+                  </div>
+                  <div class="row-grid">
+                    <div><button class="pokeButton col-5" type="button">Option Text</button></div>
+                    <div class="col-2"></div>
+                    <div><button class="pokeButton col-5" type="button">Option Text</button></div>
+                  </div>
+                  </div><!-- PANEL CONTENT -->
+                </div>
+                <div class="col-2"></div>
+                <div class="pokePanel col-3">
+                  <div class="pokePanel-title"><h3>Panel Title 2</h3></div><!--  PANEL TITLE -->
+                  <div class="pokePanel-content">
+                    <div class="pokeText">Content Text</div>
+                    </div><!-- PANEL CONTENT -->
+                  </div>
+                  <div class="col-2"></div>
+                </div>
+                <!-- +++++++++++++++++++ -->
+                <!-- MAIN HUD DISPLAY OVERVIEW -->
+                <!-- +++++++++++++++++++ -->
+                <div class="row-grid pokeHUD">
+                  <div class="col-3">
+                    <a><p>Stat 1</p></a><!--  Stat -->
+                    <a><p>Stat 2</p></a><!--  Stat -->
+                    <a><p>Stat 3</p></a><!--  Stat -->
+                    <a><p>Stat 4</p></a><!--  Stat -->
+                  </div>
+                  <div class="col-6">
+                    <canvas>
+                    <img/>
+                    </canvas><!-- Add pokemon gif -->
+                  </div>
+                  <div class="col-3">
+                    <a><p>Stat 5</p></a><!--  Stat -->
+                    <a><p>Stat 6</p></a><!--  Stat -->
+                    <a><p>Stat 7</p></a><!--  Stat -->
+                    <a><p>Stat 8</p></a><!--  Stat -->
+                  </div>
+                </div>
+                <!-- +++++++++++++++++++ -->
+                <!-- BACKGROUND INFO -->
+                <!-- +++++++++++++++++++ -->
+                <div class="row-grid">
+                  <div class="col-2"></div>
+                  <div class="pokePanel col-8">
+                    <div class="pokePanel-title"><h3>Background Info</h3></div><!--  PANEL TITLE -->
+                    <div class="pokePanel-content">
+                      <div class="pokeText">Content Text</div>
+                      </div><!-- PANEL CONTENT -->
+                    </div>
+                    <div class="col-2"></div>
+                  </div>
+                  <!-- +++++++++++++++++++ -->
+                  <!-- STRENGTHS & WEAKNESSES -->
+                  <!-- +++++++++++++++++++ -->
+                  <div clas="row-grid">
+                    <div class="col-2"></div>
+                    <div>
+                      <div class="pokePanel col-3">
+                        <div class="pokePanel-title"><h3>Strengths</h3></div>
+                        <div class="pokePanel-content">
+                          <ul>
+                            <li>Example</li>
+                            <li>Example</li>
+                            <li>Example</li>
+                            <li>Example</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-2"></div>
+                      <div class="pokePanel col-3">
+                        <div class="pokePanel-title"><h3>Weaknesses</h3></div>
+                        <div class="pokePanel-content">
+                          <ul>
+                            <li>Example</li>
+                            <li>Example</li>
+                            <li>Example</li>
+                            <li>Example</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-2"></div>
+                  </div>
+                  <!-- +++++++++++++++++++ -->
+                  <!-- FUN FACTS -->
+                  <!-- +++++++++++++++++++ -->
+                  <div class="row-grid">
+                    <div class="col-2"></div>
+                    <div class="pokePanel col-8">
+                      <div class="pokePanel-title"><h3>Fun Facts</h3></div>
+                      <div class="pokePanel-content">
+                        <ul>
+                          <li>Example</li>
+                          <li>Example</li>
+                          <li>Example</li>
+                          <li>Example</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-2"></div>
+                  </div>
+                </div>
+                
+                <div id="example3" class="example-container tab-pane fade">
+                <div class="row-grid">
+                  <div class="col-2"></div>
+                  <div class="pokePanel col-8">
+                    <div class="pokePanel-title text-center"><h3>Musings</h3></div><!--  PANEL TITLE -->
+                    <div class="pokePanel-content">
+                      <div class="pokeText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea quisquam id vel eaque ad natus harum reiciendis, alias officia cupiditate dolor, repellat dignissimos quas non est nesciunt ab. Odio, sapiente.</div>
+                      </div><!-- PANEL CONTENT -->
+                    </div>
+                    <div class="col-2"></div>
+                  </div>
+                  <div class="row-grid">
+                    <div class="col-1"></div>
+                    <div class="pokePanel col-10">
+                      <div class="pokePanel-title text-center"><h3>Druma</h3></div>
+                      <div class="pokePanel-content">
+                        <div class="pokeText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus porro reiciendis beatae, temporibus mollitia perferendis odio perspiciatis fugit ut cupiditate voluptate culpa odit iste unde, ipsa, voluptas nemo delectus ad?<br>Dignissimos, maiores odit, amet pariatur illum, porro architecto quo ipsa accusantium dolore facere voluptatum! Similique ipsam consequuntur repudiandae recusandae sunt labore explicabo deserunt, doloribus. Voluptates necessitatibus ab, mollitia itaque error!<br>Nulla labore nobis neque non, ab quidem accusantium et possimus minus rerum quod asperiores, tempore, ipsam veniam animi consequatur explicabo voluptatibus. Vitae soluta accusantium, ipsam culpa voluptatibus, quidem quibusdam sequi!<br>Ipsam doloremque accusantium eum, optio cumque praesentium odit iste cupiditate et modi animi eligendi molestias? Ex iste, culpa, est magni cupiditate ducimus fugiat sit perferendis accusamus, quibusdam expedita incidunt ipsum.<br>Optio provident labore libero enim rem ex odio tenetur sequi expedita animi, dignissimos at est voluptas eligendi blanditiis facilis recusandae laborum reiciendis dolor impedit nisi, dolorem doloremque harum non! Reprehenderit.</div>
+                      </div>
+                    </div>
+                    <div class="col-1"></div>
+                    </div>
+                  </div>
               </div>
-              <div class="col-sm-3 panel panel-default">
-                <div class="panel-body">
-                  <!-- Generate/ Update File and Download Button -->
-                  <button class="btn btn-success btn-block" id="create-file">Generate Your CSS</button>
-                  <a href="" download="" id="download-link"><button class="btn btn-link btn-block">Download your CSS File</button></a>
+            </div>
+            <!-- end example-markup -->
+            <!-- </div> -->
+          </div>
+          <!--  end content examples -->
+          </div> <!-- Lower Body -->
+          <!-- Footer -->
+          <footer class="footer">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-6"><p>2017. K. Kunkel; T. LaRou; M. Nguyen.</p></div>
+                <div class="col-sm-6"><ul>
+                  <li><a href="https://pokeapi.co/">PokéAPI</a></li>
+                  <li><a href="https://v4-alpha.getbootstrap.com/">Bootstrap</a></li>
+                  <li><a href="https://github.com/lokesh/color-thief/">Color Thief by Lokesh</a></li>
+                </ul></div>
+              </div>
+            </div>
+          </footer>
+          <!-- End Footer -->
+          <!-- Modal for help -->
+          <!-- Modal -->
+          <div id="help-modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close btn btn-link" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title text-center">Help</h4>
+                </div>
+                <div class="modal-body">
+                  <p>Search for any pokemon by name or by number.<br> A color palette for the chosen pokemon will be generated.<br> Click magnifying glass to select pokemon.<br> Drag and drop from swatches to containers for element selection.<br> Once satisfied, you may download the set colors as a style sheet to be used in your own HTML pages.</p>
                 </div>
               </div>
             </div>
-            <!-- Row is content of the example -->
-            <div class="row">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="container">
-                            <ul class="nav nav-tabs nav-justified">
-                                <li class="active"> <a data-toggle="tab" href="#example1">Example 1</a></li>
-                                <li>                <a data-toggle="tab" href="#example2">Example 2</a></li>
-                                <li>                <a data-toggle="tab" href="#example3">Example 3</a></li>
-                            </ul>
-                            <div class="tab-content example-markup">
-                                <div id="example1" class="tab-pane fade in active">
-                                    <h1>Here is an example</h1>
-                                    <p> Just drag colors that you want to test! <br>
-                                        The colors will change all of the elements here.
-                                        This will allow you to test what a theme with your selected pokemon will look like. 
-                                        </p>
-                                    
-                                    <p>After you find something you like, <br>
-                                        click on the generate css button and you <br>
-                                        can save the css to your computer for use!<br>
-                                    </p>
-
-                                    <p>Your favorite pokemon can be saved if you are logged in. <br>
-                                        Pokemon that are saved the most will be loaded when you first visit.</p>
-                                </div>
-
-                                <div id="example2" class="tab-pane fade">
-                                    <p>Stuff</p>
-                                </div>
-
-                                <div id="example3" class="tab-pane fade">
-                                      <h1>Check it.</h1>
-                                      <p> I wanna be the very best, <br>
-                                        Like no one ever was. <br>
-                                        To catch them all is my real test, <br>
-                                      To train them is my cause, </p>
-                                      <p>
-                                        I will travel across the land, <br>
-                                        Searching far and wide. <br>
-                                        Teach Pokemon to understand <br>
-                                      The power that's inside! </p>
-                                </div> <!-- Example #3-->
-                            </div> <!-- Tab Content -->
-                        </div> <!-- container for 3 examples -->
-                    </div> <!-- panel body -->
-                </div> <!-- Panel-->
-            </div> <!-- Row-->
-      </div> <!-- Lower Body -->
-          </body>
-        </html>
+          </div>
+        </body>
+      </html>

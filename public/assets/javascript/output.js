@@ -17,7 +17,10 @@
     // }
 
     // hardcoded base CSS file. This can be changed to accept a dynamic style.
-    var baseCSSFile = "/* These are initial declarations of the CSS variables. Use by replacing any color value in this document with var([property variable name]) There are no quotes. See examples. */\nbody {\n\tbackground-color: var(--body-bg-color);\n}\np {\n\tcolor: var(--paragraph-text-color);\n}\ndiv {\n\tcolor: var(--div-text-color);\n\tbox-shadow: 5px 5px 2px var(--div-box-shadow-color);\n\tbackground-color: var(--div-bg-color);\n\tborder: 3px dotted var(--border-color);\n}\nh1,h2,h3,h4,h5,h6 {\n\tcolor: var(--header-text-color);\n}";
+    var baseCSSFile = "/* These are initial declarations of the CSS variables. Use by replacing any color value in this document with var([property variable name]) There are no quotes. See examples. */";
+    /* Main body Styles currently omitted. Output only for HTML header.
+    \nbody {\n\tbackground-color: var(--body-bg-color);\n}\np {\n\tcolor: var(--paragraph-text-color);\n}\ndiv {\n\tcolor: var(--div-text-color);\n\tbox-shadow: 5px 5px 2px var(--div-box-shadow-color);\n\tbackground-color: var(--div-bg-color);\n\tborder: 3px dotted var(--border-color);\n}\nh1,h2,h3,h4,h5,h6 {\n\tcolor: var(--header-text-color);\n}"
+    */
 
     // Generate the color to DOM elements and append to palette-box
     // Function accepts an array of colors.

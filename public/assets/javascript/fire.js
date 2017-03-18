@@ -43,7 +43,7 @@ $(document).ready(function(){
   // --------------------------------------------------------
   function registerFire(){
     if(firebase.auth().currentUser){
-      logoutFire();
+      firebase.auth().signOut();
     } else {
       var email = $("#email").val();
       var password = $("#password").val();
@@ -185,55 +185,61 @@ $(document).ready(function(){
   $("body").on("click", ".hoverSave", function(){
     //CHECK IF THEY ARE LOGGED IN
     var user = firebase.auth().currentUser;
-      $("#message").css("visibility", "hidden");
+    // console.log("User: "+user);
+      // $("#message").css("visibility", "hidden");
       //if yes continue
       if(user){
         //get the name of pokemon from parent box
         pokeName = $(this).parent().parent().attr("pokemonName");
         //check each pokemon name in the array to see if the looked at one is there
-        var exists = 0;
         database.ref().once("value", function(snapshot){
           popularity = snapshot.val().popularity;
+          // console.log("popularity: "+popularity);
           profile = snapshot.val().profile;
-          console.log(profile);
+          // console.log("profile: "+profile);
+          var exists = 0;
           for(i=0; i<popularity.length; i++){
             if(popularity[i].name == pokeName){ //add amount to that name
               popularity[i].saves++;
               exists = 1;
             }
           }
+          // console.log("exists: "+exists);
           //if the pokemon hasnt been looked at yet then add it
           if(exists == 0){
             popularity.push({name:pokeName, saves:1});
           }
           //add their profile and pokemon saves
-          var user = $("#email").val();
-          for(var i=0; i<profile.length; i++){
-            if(profile[i].name == user){
-              //check if pokemon save already exists
-              for(var j=0; j<profile[i].savedPokemon.length; j++){
-                if(profile[i].savedPokemon[j] == pokeName){
-                  //then do nothing because its already been saved
-                  $("#message").html("Already saved.");
-                  unhide();
-                  break;
-                }
-                else if((j+1)== profile[i].savedPokemon.length && profile[i].savedPokemon[j] != pokeName){
-                  //if the pokemon save doesn't exist then add it
-                  profile[i].savedPokemon.push(pokeName);
-                  $("#message").html("Pokemon saved to profile.");
-                  unhide();
-                  break;
-                }
-              }
-            break;
-            }
-            else if((i+1)==profile.length && profile[i].name != user){
-              profile[i+1]={name:user,savedPokemon:[pokeName]};
-              $("#message").html("Pokemon saved to profile.");
-              unhide();
-            }
-          }
+          var userElement = $("#email").val();
+          var userExists = false;
+         	for(var i=0; i<profile.length; i++){
+	            if(profile[i].name == userElement){
+	            	userExists = true;
+	              //check if pokemon save already exists
+	              var exists = false;
+		            for(var j=0; j<profile[i].savedPokemon.length; j++){
+		                if(profile[i].savedPokemon[j] == pokeName){
+		                  //then do nothing because its already been saved
+		                  $("#message").html("Already saved.");
+		                  unhide();
+		                  exists = true;
+		                }
+		                else if((j+1)== profile[i].savedPokemon.length && exists == false){
+		                  //if the pokemon save doesn't exist then add it
+		                  profile[i].savedPokemon.push(pokeName);
+		                  $("#message").html("Pokemon saved to profile.");
+		                  unhide();
+		                  break;
+		                }
+		            }
+	            }
+	            else if((i+1)==profile.length && userExists == false){
+	              profile[i+1]={name:userElement,savedPokemon:[pokeName]};
+	              $("#message").html("Pokemon saved to profile.");
+	              unhide();
+	              break;
+	            }
+          	}
 
           database.ref().set({
             trending: trending,
@@ -299,5 +305,79 @@ $(document).ready(function(){
   // --------------------------------------------------------
   // Trending & Popularity buttons clicked -> ref database
   // --------------------------------------------------------
+  $("#trending").on("click", function(){
+        database.ref().once("value", function(snapshot){
+          var trending = snapshot.val().trending;
+          // console.log("Full trending: "+trending);
+          var i = trending.length - 1;
+          var j = 0;
+          var top4 = [];
+          for(i; j<4; j++){
+          	// console.log("Top4: #"+j+" : "+trending[i].name);
+          	top4[j] = trending[i].name;
+            i--;
+          }
+          // console.log("top4 list: "+top4);
+          $("#message").html("trending: "+top4);
+		  unhide();
+        }); 
+  });
+
+  $("#popular").on("click", function(){
+        database.ref().once("value", function(snapshot){
+          var popular = snapshot.val().popularity;
+          // console.log("Full popular: "+popular);
+          var i = popular.length - 1;
+          var j = 0;
+          var top4 = [];
+          for(i; j<4; j++){
+          	// console.log("Top4: #"+j+" : "+popular[i].name);
+          	top4[j] = popular[i].name;
+            i--;
+          }
+          // console.log("top4 list: "+top4);
+          $("#message").html("popular: "+top4);
+		  unhide();
+        });
+  });
+
+  // --------------------------------------------------------
+  // Profile buttons clicked -> ref database kck
+  // --------------------------------------------------------
+  //get a snapshot of their profile and display their saved pokemon
+  $("#profile").on("click", function(){
+    //CHECK IF THEY ARE LOGGED IN
+    var user = firebase.auth().currentUser;
+      //if yes continue
+      if(user){
+        database.ref().once("value", function(snapshot){
+          profile = snapshot.val().profile;
+          //check if user exists in the profile database
+          var userElement = $("#email").val();
+          var userExists = false;
+          var saves = [];
+          for(var i=0; i<profile.length; i++){
+              if(profile[i].name == userElement){
+                userExists = true;
+                //if user exists, look through their saves
+                saves = profile[i].savedPokemon;
+                console.log(saves);  
+                $("#message").html("Saves: "+saves);
+                unhide();            
+            }//if user doesn't exist then add them to profile
+              else if((i+1)==profile.length && userExists == false){
+                $("#message").html("You don't have saved pokemon yet.");
+                unhide();
+                break;
+              }
+            }
+        });
+      } 
+      //if not give a notification to login for saves
+      else {
+        $("#message").css("visibility", "visible");
+        $("#message").html("You need to login for profile.");
+      }
+  });
 
 });//end document ready
